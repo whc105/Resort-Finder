@@ -8,11 +8,20 @@ import { FetchResortsService } from '../fetch-resorts.service';
 })
 export class ResortListComponent implements OnInit {
 
+  public resortList: any[] = [];
+
   constructor(
     private fetchResortsService: FetchResortsService
   ) { }
 
   ngOnInit() {
+    this.getResorts();
   }
+
+  getResorts() {
+    this.fetchResortsService
+    .getResorts()
+    .subscribe(resorts => this.resortList = resorts);
+  };
 
 }

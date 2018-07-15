@@ -1,4 +1,6 @@
-<p>
-  resort-list works!
-</p>
-<resort-item></resort-item>
+<div class="title">
+  <h4>Resort Lists</h4>
+</div>
+<div *ngFor="let resort of resortList">
+  <resort-item [resort]=resort></resort-item>
+</div>

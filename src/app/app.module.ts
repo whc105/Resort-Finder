@@ -1,10 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ResortListComponent } from './resort-list/resort-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ResortListComponent } from './resort-list/resort-list.component';
 import { ResortItemComponent } from './resort-item/resort-item.component';
+
+const appRoutes: Routes = [
+  { path: 'resort', component: ResortItemComponent },
+  { path: 'resortlists', component: ResortListComponent },
+]
 
 @NgModule({
   declarations: [
@@ -14,7 +22,12 @@ import { ResortItemComponent } from './resort-item/resort-item.component';
     ResortItemComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

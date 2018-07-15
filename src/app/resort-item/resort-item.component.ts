@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'resort-item',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resort-item.component.css']
 })
 export class ResortItemComponent implements OnInit {
+
+  @Input() resort: any;
 
   constructor() {}
 
