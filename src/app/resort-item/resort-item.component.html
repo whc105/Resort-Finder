@@ -1,3 +1,33 @@
-<p>
-  {{resort.resort_name}}
-</p>
+<div class="row resort-item">
+  <div class="col-md-4">
+    <div>
+      {{resort.resort_name}}
+    </div>
+    <div>
+      {{resort.location}}
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div>
+      Lifts: {{resort.total_runs}}
+    </div>
+    <div>
+      Runs: {{resort.total_lifts}}
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div>
+      Terrain: {{resort.skiable_terrain}}
+    </div>
+    <div>
+      Vertical: {{resort.vertical_drop}}
+    </div>
+  </div>
+  <div class="col-md-2 select-resort-button">
+    <div class="select-resort-button-series">
+      <button type="button" class="btn select-resort">
+        <i class="fas fa-angle-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

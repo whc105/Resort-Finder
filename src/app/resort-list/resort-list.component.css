@@ -1,3 +1,12 @@
 .title {
     text-align: center;
 }
+
+.resort-list {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.resort-element {
+    padding: 10px;
+}

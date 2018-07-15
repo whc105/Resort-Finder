@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ResortListComponent } from './resort-list/resort-list.component';
 import { ResortItemComponent } from './resort-item/resort-item.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   { path: 'resort', component: ResortItemComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     ResortListComponent,
     NavBarComponent,
     ResortItemComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+.resort-item {
+    border: 1px solid steelblue;
+    border-radius: 5px;
+}
+
+.select-resort {
+    height: 80%;
+    border-color: steelblue;
+    color: steelblue;
+    background-color: transparent;
+    float: right;
+}
+
+.select-resort:hover {
+    background-color: steelblue;
+}
+
+.select-resort:hover > i {
+    color: white;
+}
+
+.select-resort-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0px;
+}
+
+.select-resort-button-series {
+    width: 90%;
+}
