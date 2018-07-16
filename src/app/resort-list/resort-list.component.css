@@ -5,8 +5,15 @@
 .resort-list {
     padding-left: 20px;
     padding-right: 20px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .resort-element {
     padding: 10px;
+}
+
+.sidebar {
+    padding-right: 0px;
+    padding-left: 0px;
 }

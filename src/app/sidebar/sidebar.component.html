@@ -1,3 +1,23 @@
 <div class="sidebar">
-wow
+  <div id="sidebar">
+    <h5 id="search">
+      Search
+    </h5>
+  </div>
+  <div>
+    <h6 id="size">
+      Resort Size
+    </h6>
+    <div class="btn-group-toggle">
+      <label class="btn-outline-primary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="model.left"> Large Resorts
+      </label>
+      <label class="btn-outline-primary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="model.middle"> Medium Resorts
+      </label>
+      <label class="btn-outline-primary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="model.right"> Small Resorts
+      </label>
+    </div>
+  </div>
 </div>
