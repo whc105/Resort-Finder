@@ -1,19 +1,24 @@
-<div class="title">
-  <h4>All Resorts</h4>
-</div>
-<div class="resort-list">
-  <div class="row">
-    <div class="col-md-4">
-      Location
-    </div>
-    <div class="col-md-3">
-      Lifts/Runs
-    </div>
-    <div class="col-md-3">
-      Terrain
-    </div>
+<div class="resort-list row">
+  <div class="col-md-1">
+    <sidebar></sidebar>
   </div>
-  <div *ngFor="let resort of resortList" class="resort-element">
-    <resort-item [resort]=resort></resort-item>
+  <div class="col-md-11">
+    <div class="title">
+      <h4>All Resorts</h4>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        Location
+      </div>
+      <div class="col-md-3">
+        Lifts/Runs
+      </div>
+      <div class="col-md-3">
+        Terrain
+      </div>
+    </div>
+    <div *ngFor="let resort of resortList" class="resort-element">
+      <resort-item [resort]=resort></resort-item>
+    </div>
   </div>
 </div>
