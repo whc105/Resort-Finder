@@ -7,7 +7,9 @@ var port = process.env.PORT || 8080;
 app.set('port', port);
 
 const getResortsAPI = require('./api/getResorts');
+const getLocationsAPI = require('./api/getLocations');
 getResortsAPI(app);
+getLocationsAPI(app);
 
 require('./db');
 

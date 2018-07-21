@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -9,7 +8,7 @@ export class FetchResortsService {
 
   public resorts: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getResorts() {
     if (this.resorts.length === 0) {
@@ -25,8 +24,8 @@ export class FetchResortsService {
   fetchResorts() {
     return fetch('/api/getAllResorts').then((response) => {
       return response.json();
-    }).then((result) => {
-      return result;
+    }).then((resorts) => {
+      return resorts;
     })
   }
 

@@ -4,20 +4,25 @@
       Search
     </h5>
   </div>
-  <div>
+  <div class="resort-size">
     <h6 id="size">
       Resort Size
     </h6>
     <div class="btn-group-toggle">
-      <label class="btn-outline-primary" ngbButtonLabel>
-        <input type="checkbox" ngbButton [(ngModel)]="model.left"> Large Resorts
+      <label>
+        <input type="checkbox" [(ngModel)]="model.left"> Large
       </label>
-      <label class="btn-outline-primary" ngbButtonLabel>
-        <input type="checkbox" ngbButton [(ngModel)]="model.middle"> Medium Resorts
+    </div>
+    <div class="btn-group-toggle">
+      <label>
+      <input type="checkbox" [(ngModel)]="model.middle"> Medium
       </label>
-      <label class="btn-outline-primary" ngbButtonLabel>
-        <input type="checkbox" ngbButton [(ngModel)]="model.right"> Small Resorts
+    </div>
+    <div class="btn-group-toggle">
+      <label>
+        <input type="checkbox" [(ngModel)]="model.right"> Small
       </label>
     </div>
   </div>
+  <location-selector></location-selector>
 </div>

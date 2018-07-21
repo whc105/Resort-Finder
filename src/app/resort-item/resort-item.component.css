@@ -1,6 +1,6 @@
 .resort-item {
     border: 1px solid steelblue;
-    border-radius: 5px;
+    box-shadow: 1px 1px steelblue;
 }
 
 .select-resort {

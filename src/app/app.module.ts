@@ -11,6 +11,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ResortListComponent } from './resort-list/resort-list.component';
 import { ResortItemComponent } from './resort-item/resort-item.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LocationSelectorComponent } from './location-selector/location-selector.component';
 
 const appRoutes: Routes = [
   { path: 'resort', component: ResortItemComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     NavBarComponent,
     ResortItemComponent,
     SidebarComponent,
+    LocationSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes
     )
