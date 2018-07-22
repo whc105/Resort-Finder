@@ -24,5 +24,15 @@
       </label>
     </div>
   </div>
+  <div class="resort-size">
+    <h6 id="size">
+      Night
+    </h6>
+    <div class="btn-group-toggle">
+      <label>
+        <input type="checkbox" [(ngModel)]="areaFilters.night" (change)="nightPicker($event)"> Night Runs
+      </label>
+    </div>
+  </div>
   <location-selector (locationEvent)="locationPicker($event)"></location-selector>
 </div>

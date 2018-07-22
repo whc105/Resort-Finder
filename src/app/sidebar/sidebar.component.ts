@@ -7,7 +7,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  @Output() locationList: EventEmitter<any> = new EventEmitter();
+  //@Output() locationFilter: EventEmitter<any> = new EventEmitter();
+  //@Output() nightFilter: EventEmitter<any> = new EventEmitter();
+  
+  @Output() filters: EventEmitter<any> = new EventEmitter();
 
   private resortSize = {
     large: true,
@@ -15,13 +18,24 @@ export class SidebarComponent implements OnInit {
     small: true
   };
 
+  private areaFilters = {
+    locationList: [],
+    night: false
+  }
+
   constructor() {}
 
   ngOnInit() {
   }
 
   locationPicker(locationList) {
-    this.locationList.emit(locationList);
+    this.areaFilters.locationList = locationList;
+    this.filters.emit(this.areaFilters);
+  }
+
+  nightPicker(e) {
+    this.areaFilters.night = this.areaFilters.night;
+    this.filters.emit(this.areaFilters);
   }
 
 }
