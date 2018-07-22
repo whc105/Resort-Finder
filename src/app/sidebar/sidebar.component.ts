@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'sidebar',
@@ -7,15 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  private model = {
-    left: true,
-    middle: true,
-    right: true
+  @Output() locationList: EventEmitter<any> = new EventEmitter();
+
+  private resortSize = {
+    large: true,
+    medium: true,
+    small: true
   };
 
   constructor() {}
 
   ngOnInit() {
+  }
+
+  locationPicker(locationList) {
+    this.locationList.emit(locationList);
   }
 
 }

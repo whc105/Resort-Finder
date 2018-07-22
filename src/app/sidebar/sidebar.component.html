@@ -10,19 +10,19 @@
     </h6>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" [(ngModel)]="model.left"> Large
+        <input type="checkbox" [(ngModel)]="resortSize.large"> Large
       </label>
     </div>
     <div class="btn-group-toggle">
       <label>
-      <input type="checkbox" [(ngModel)]="model.middle"> Medium
+      <input type="checkbox" [(ngModel)]="resortSize.medium"> Medium
       </label>
     </div>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" [(ngModel)]="model.right"> Small
+        <input type="checkbox" [(ngModel)]="resortSize.small"> Small
       </label>
     </div>
   </div>
-  <location-selector></location-selector>
+  <location-selector (locationEvent)="locationPicker($event)"></location-selector>
 </div>

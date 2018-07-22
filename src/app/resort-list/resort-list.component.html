@@ -1,6 +1,6 @@
 <div class="resort-list row">
   <div class="col-md-2 sidebar">
-    <sidebar></sidebar>
+    <sidebar (locationList)="filterLocationList($event)"></sidebar>
   </div>
   <div class="col-md-10 list">
     <div class="title">
@@ -17,7 +17,7 @@
         Terrain
       </div>
     </div>
-    <div *ngFor="let resort of resortList" class="resort-element">
+    <div *ngFor="let resort of displayedResortList" class="resort-element">
       <resort-item [resort]=resort></resort-item>
     </div>
   </div>

@@ -1,0 +1,18 @@
+<div class="location">
+  <h6 id="size">
+    Location
+  </h6>
+  <div *ngFor="let area of locations | async; index as i">
+    <button type="button" class="btn btn-outline-dark location-selector" (click)="isCollapsed[i] = !isCollapsed[i]"
+          [attr.aria-expanded]="!isCollapsed[i]" aria-controls="collapseCountry">
+      {{area.region}}
+    </button>
+    <div id="collapseCountry" [ngbCollapse]="isCollapsed[i]">
+      <div *ngFor="let location of area.locations">
+        <label>
+          <input type="checkbox" (change)="addLocations($event, location)"> {{location}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchResortsService {
 
   public resorts: any[] = [];
