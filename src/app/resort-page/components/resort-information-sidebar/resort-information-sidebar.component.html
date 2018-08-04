@@ -1,0 +1,70 @@
+<div class="side-content" *ngIf="resort">
+  <div class="resort-name">
+    {{resort.resort_name}}
+  </div>
+  <div class="resort-location">
+    {{resort.location}}
+    <i class="fas fa-map-marker-alt"></i>
+  </div>
+  <div class="resort-data">
+    <div class="resort-data-header">
+      Resort Summary
+    </div>
+    <div class="resort-data-content">
+      <div class="trails">
+        <h6>Terrain: {{resort.total_runs}} Runs</h6>
+        <div class="vertical">
+          Vertical Drop: {{resort.vertical_drop}}
+        </div>
+        <div class="acre">
+          Area: {{resort.skiable_terrain}} Acres
+        </div>
+        <div class="green-runs">
+          Green: {{resort.green_run_pct/100 * resort.total_runs | number: '1.0-0'}}
+          <ngb-progressbar type="success" [value]="resort.green_run_pct" class="green">{{resort.green_run_pct}}%</ngb-progressbar>
+        </div>
+        <div class="blue-runs">
+          Blue: {{resort.blue_run_pct/100 * resort.total_runs | number: '1.0-0'}}
+          <ngb-progressbar type="primary" [value]="resort.blue_run_pct">{{resort.blue_run_pct}}%</ngb-progressbar>
+        </div>
+        <div class="black-runs">
+          Black: {{resort.bd_run_pct/100 * resort.total_runs | number: '1.0-0'}}
+          <ngb-progressbar type="secondary" [value]="resort.bd_run_pct">{{resort.bd_run_pct}}%</ngb-progressbar>
+        </div>
+        <div class="double-runs">
+          Double Black: {{resort.double_bd_run_pct/100 * resort.total_runs | number: '1.0-0'}}
+          <ngb-progressbar type="dark" [value]="resort.double_bd_run_pct">{{resort.double_bd_run_pct}}%</ngb-progressbar>
+        </div>
+      </div>
+      <div class="lifts">
+        <h6>Total Lifts: {{resort.total_lifts}}</h6>
+        <div class="lift-list">
+          <div>
+            Gondolas: {{resort.gondolas}}
+          </div>
+          <div>
+            High Speed Quad Chair: {{resort.high_speed_quad}}
+          </div>
+          <div>
+            High Speed Six Chair: {{resort.high_speed_six}}
+          </div>
+          <div>
+            Surface Lift: {{resort.surface_lift}}
+          </div>
+          <div>
+            Double Chair: {{resort.double_chair}}
+          </div>
+          <div>
+            Triple Chair: {{resort.triple_chair}}
+          </div>
+          <div>
+            Quad Chair: {{resort.quad_lift}}
+          </div>
+          <div>
+            Eight Person Chair: {{resort.eight_pers_lift}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

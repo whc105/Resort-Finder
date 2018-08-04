@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
