@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { from, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FetchLocationsService {
   
-  public locations: any[] = [];
+  public locations: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
   constructor() { }
 
   getLocations() {
-    if (this.locations.length === 0) {
-      return from(this.fetchLocations().then((locations) => {
-        this.locations = locations;
-        return this.locations;
-      }))
-    } else {
-      return from(this.locations);
-    }
+    return this.fetchLocations().then((locations) => {
+      this.locations.next(locations)
+      return this.locations;
+    })
   }
 
   fetchLocations() {

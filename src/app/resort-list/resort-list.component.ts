@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
+import Resort from '../../resources/resorts';
 
 @Component({
   selector: 'resort-list',
@@ -9,13 +10,14 @@ import { FetchResortsService } from '../fetch-resorts.service';
 
 export class ResortListComponent implements OnInit {
 
-  public resortList: any[] = [];
-  public displayedResortList: any[] = [];
+  public resortList: Resort[] = [];
+  public displayedResortList: Resort[] = [];
   public selectedLocationList: string[] = [];
 
   constructor(
-    private fetchResortsService: FetchResortsService
-  ) { }
+    private fetchResortsService: FetchResortsService,
+  ) {
+  }
 
   ngOnInit() {
     this.getResortList();
@@ -23,15 +25,14 @@ export class ResortListComponent implements OnInit {
 
   getResortList() {
     return this.fetchResortsService
-    .getResorts().toPromise()
+    .getResorts()
     .then(resorts => {
-      this.displayedResortList = resorts;
-      this.resortList = resorts;
+      this.displayedResortList = resorts.value;
+      this.resortList = resorts.value;
     });
   };
 
   filterLocationList(locationFilters) {
-
     //Makes a shallow copy
     this.displayedResortList = this.resortList.slice();
     if (locationFilters.locationList.length !== 0) {

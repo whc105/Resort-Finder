@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { from, BehaviorSubject } from 'rxjs';
+import Resort from '../resources/resorts';
 
 @Injectable({
   providedIn: 'root'
@@ -7,19 +8,15 @@ import { from } from 'rxjs';
 
 export class FetchResortsService {
 
-  public resorts: any[] = [];
+  public resorts: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
 
   constructor() {}
 
   getResorts() {
-    if (this.resorts.length === 0) {
-      return from(this.fetchResorts().then((result) => {
-        this.resorts = result;
-        return this.resorts;
-      }))
-    } else {
-      return from(this.resorts);
-    }
+    return this.fetchResorts().then((result) => {
+      this.resorts.next(result);
+      return this.resorts
+    }); 
   }
 
   fetchResorts() {

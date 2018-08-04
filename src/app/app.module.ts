@@ -12,10 +12,13 @@ import { ResortListComponent } from './resort-list/resort-list.component';
 import { ResortItemComponent } from './resort-item/resort-item.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LocationSelectorComponent } from './location-selector/location-selector.component';
+import { ResortPageComponent } from './resort-page/resort-page.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: 'resort', component: ResortItemComponent },
+  { path: '', component: HomeComponent },
   { path: 'resortlists', component: ResortListComponent },
+  { path: 'resortlists/:resort_name', component: ResortPageComponent }
 ]
 
 @NgModule({
@@ -24,8 +27,10 @@ const appRoutes: Routes = [
     ResortListComponent,
     NavBarComponent,
     ResortItemComponent,
+    ResortPageComponent,
     SidebarComponent,
     LocationSelectorComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

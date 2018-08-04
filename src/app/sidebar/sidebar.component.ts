@@ -7,9 +7,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  //@Output() locationFilter: EventEmitter<any> = new EventEmitter();
-  //@Output() nightFilter: EventEmitter<any> = new EventEmitter();
-  
   @Output() filters: EventEmitter<any> = new EventEmitter();
 
   private resortSize = {

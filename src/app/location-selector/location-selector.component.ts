@@ -34,8 +34,8 @@ export class LocationSelectorComponent implements OnInit {
 
   getLocations() {
     this.fetchLocationsService.getLocations()
-    .toPromise().then((locations) => {
-      this.locations.next(locations);
+    .then((locations) => {
+      this.locations.next(locations.value);
     });
   }
 }
