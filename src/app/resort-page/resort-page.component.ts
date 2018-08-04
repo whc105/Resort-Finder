@@ -23,5 +23,4 @@ export class ResortPageComponent implements OnInit {
       this.resort = resort;
     });
   }
-
 }

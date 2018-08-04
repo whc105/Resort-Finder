@@ -1,4 +1,18 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .info-sidebar {
-    width: 20%;
-    height: 100%;
+    flex: 2 1 0%;
+    margin: 10px;
+    background-color: rgb(245, 245, 245);
+    height: calc(100vh - 76px);
+}
+
+.resort-content {
+    flex: 8 1 0%;
+    margin: 10px;
+    background-color: rgb(245, 245, 245);
+    height: calc(100vh - 76px);
 }

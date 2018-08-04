@@ -1,3 +1,7 @@
 Run with 
 * ng serve --proxy-config proxy.config.json
 * npm run build-server
+
+Some Resort Analysis
+Average Lift Ticket Price: $55.05078125
+Average Amount of Runs: 49.9694

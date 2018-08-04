@@ -1,20 +1,10 @@
-.side-content {
-    height: 100vh;
-    margin: 10px;
-}
-
-.resort-name {
-    font-weight: bold;
-    font-size: 25px;
-}
-
 .resort-data {
-    padding-top: 30px;
+    margin: 5px;
 }
 
 .resort-data-header {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .resort-data-content {

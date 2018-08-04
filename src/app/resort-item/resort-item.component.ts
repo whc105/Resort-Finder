@@ -20,7 +20,6 @@ export class ResortItemComponent implements OnInit {
   }
 
   navigateToResort(event) {
-    console.log(this.resort);
     this.router.navigateByUrl(`/resortlists/${this.resort.resort_name}`)
   }
 

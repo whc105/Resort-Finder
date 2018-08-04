@@ -13,7 +13,4 @@ export class ResortInformationSidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-
-  ngOnChanges() {
-  }
 }

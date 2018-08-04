@@ -1,0 +1,45 @@
+<div class="content-container" *ngIf="resort">
+  <div class="resort-name">
+    {{resort.resort_name}}
+  </div>
+  <div class="sub-container">
+    <div class="row">
+      <div class="resort-location col-md-4">
+        <div class="subtitle">
+          Location
+        </div>
+        {{resort.location}}
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="country col-md-4">
+        <div class="subtitle">
+          Country
+        </div>
+        {{resort.region}}
+      </div>
+      <div class="season col-md-4">
+        <div class="subtitle">
+          Season Date
+        </div>
+        {{resort.season_open}} - {{resort.season_close}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="price col-md-4" *ngIf="resort.lift_tickets">
+        <div class="subtitle">
+          Lift Ticket
+        </div>
+        ${{resort.lift_tickets}}
+        <div *ngIf="ticketPriceCostBasis > 0">
+          ${{ticketPriceCostBasis}} more than average
+        </div>
+        <div *ngIf="ticketPriceCostBasis < 0">
+          ${{ticketPriceCostBasis}} less than average
+        </div>
+        <div *ngIf="ticketPriceCostBasis == 0">
+          Average Lift Ticket Price
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
