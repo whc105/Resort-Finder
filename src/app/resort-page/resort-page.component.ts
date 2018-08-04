@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../node_modules/@angular/router';
+import { FetchResortsService } from '../fetch-resorts.service';
 
 @Component({
   selector: 'resort-page',
@@ -9,12 +10,16 @@ import { ActivatedRoute } from '../../../node_modules/@angular/router';
 export class ResortPageComponent implements OnInit {
 
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private fetchResortsService: FetchResortsService
   ) { }
 
   ngOnInit() {
     const resort_name = this.activatedRoute.snapshot.paramMap.get("resort_name");
     console.log(resort_name)
+    this.fetchResortsService.fetchResort(resort_name).then((elem) => {
+      console.log(elem)
+    })
   }
 
 }

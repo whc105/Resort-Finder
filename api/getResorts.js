@@ -13,4 +13,14 @@ module.exports = app => {
             }
         });
     });
+
+    app.get('/api/getResort/:name', (req, res) => {
+        Resort.findOne({resort_name: req.params.name}, (err, resort) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(resort);
+            }
+        })
+    });
 }

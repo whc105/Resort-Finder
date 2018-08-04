@@ -14,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LocationSelectorComponent } from './location-selector/location-selector.component';
 import { ResortPageComponent } from './resort-page/resort-page.component';
 import { HomeComponent } from './home/home.component';
+import { ResortInformationSidebarComponent } from './resort-page/components/resort-information-sidebar/resort-information-sidebar.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     SidebarComponent,
     LocationSelectorComponent,
     HomeComponent,
+    ResortInformationSidebarComponent,
   ],
   imports: [
     BrowserModule,

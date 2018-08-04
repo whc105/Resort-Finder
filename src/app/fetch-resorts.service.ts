@@ -27,4 +27,12 @@ export class FetchResortsService {
     })
   }
 
+  fetchResort(name) {
+    return fetch(`/api/getResort/${name}`).then((response) => {
+      return response.json();
+    }).then((resort) => {
+      return resort;
+    })
+  }
+
 }
