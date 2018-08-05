@@ -5,13 +5,7 @@
     </div>
     <div class="resort-data-content">
       <div class="trails">
-        <h6>Terrain: {{resort.total_runs}} Runs</h6>
-        <div class="vertical">
-          Vertical Drop: {{resort.vertical_drop}}
-        </div>
-        <div class="acre">
-          Area: {{resort.skiable_terrain}} Acres
-        </div>
+        <h6>Trails: {{resort.total_runs}} Runs</h6>
         <div class="green-runs">
           Green: {{resort.green_run_pct/100 * resort.total_runs | number: '1.0-0'}}
           <ngb-progressbar type="success" [value]="resort.green_run_pct" class="green">{{resort.green_run_pct}}%</ngb-progressbar>

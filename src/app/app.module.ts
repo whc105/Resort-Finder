@@ -45,7 +45,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]

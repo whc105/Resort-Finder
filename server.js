@@ -8,8 +8,10 @@ app.set('port', port);
 
 const getResortsAPI = require('./api/getResorts');
 const getLocationsAPI = require('./api/getLocations');
+const getMapsAPI = require('./api/getMapsAPI');
 getResortsAPI(app);
 getLocationsAPI(app);
+getMapsAPI(app);
 
 require('./db');
 

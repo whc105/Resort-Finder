@@ -6,28 +6,47 @@
     <div class="row">
       <div class="resort-location col-md-4">
         <div class="subtitle">
-          Location
+          Location <i class="fas fa-map-marker-alt"></i>
         </div>
         {{resort.location}}
-        <i class="fas fa-map-marker-alt"></i>
       </div>
       <div class="country col-md-4">
         <div class="subtitle">
-          Country
+          Region <i class="fas fa-globe"></i>
         </div>
         {{resort.region}}
       </div>
       <div class="season col-md-4">
         <div class="subtitle">
-          Season Date
+          Season Date <i class="far fa-calendar-alt"></i>
         </div>
         {{resort.season_open}} - {{resort.season_close}}
       </div>
     </div>
     <div class="row">
+      <div class="vert col-md-4">
+        <div class="subtitle">
+          Vertical Drop <i class="fas fa-arrow-down"></i>
+        </div>
+        {{resort.vertical_drop}} ft
+      </div>
+      <div class="area col-md-4">
+        <div class="subtitle">
+          Area
+        </div>
+        {{resort.skiable_terrain}} Acres
+      </div>
+      <div class="park col-md-4">
+        <div class="subtitle">
+          Terrain Parks
+        </div>
+        {{resort.terrain_parks}}
+      </div>
+    </div>
+    <div class="row">
       <div class="price col-md-4" *ngIf="resort.lift_tickets">
         <div class="subtitle">
-          Lift Ticket
+          Lift Ticket <i class="fas fa-dollar-sign"></i>
         </div>
         ${{resort.lift_tickets}}
         <div *ngIf="ticketPriceCostBasis > 0">
@@ -40,6 +59,37 @@
           Average Lift Ticket Price
         </div>
       </div>
+      <div class="snowfall col-md-4">
+        <div class="subtitle">
+          Average Snowfall <i class="far fa-snowflake"></i>
+        </div>
+        {{resort.avg_snowfall}} Inches
+      </div>
+      <div class="night col-md-4" *ngIf="resort.night_skiing">
+        <div class="subtitle">
+          Night Skiing <i class="far fa-moon"></i>
+        </div>
+        {{resort.night_skiing}} Acres
+      </div>
     </div>
   </div>
+  <div class="map-container row">
+    <div class="maps col-md-7">
+      <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="sanitizer.bypassSecurityTrustResourceUrl(mapContent)" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4" *ngIf="distanceData && distanceData.distance">
+      <div class="distance">
+        <div class="subtitle">
+          Distance <i class="fas fa-road"></i>
+        </div>
+        {{distanceData.distance.text}} from {{startingLocation}}
+      </div>
+      <div class="duration">
+        <div class="subtitle">
+          Driving Time <i class="fas fa-car"></i>
+        </div>
+        {{distanceData.duration.text}}
+      </div>
+  </div>
+
 </div>

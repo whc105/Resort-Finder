@@ -25,3 +25,16 @@
 .row {
     padding-top: 20px;
 }
+
+.maps {
+    margin: 15px;
+    height: 450px;
+}
+
+.distance {
+    text-align: left;
+}
+
+.duration {
+    text-align: left;
+}
