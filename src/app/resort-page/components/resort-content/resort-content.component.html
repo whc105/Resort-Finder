@@ -84,7 +84,7 @@
     <div class="maps col-md-7">
       <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="mapContent" allowfullscreen></iframe>
     </div>
-    <div class="col-md-4" *ngIf="distanceData && distanceData.distance">
+    <div class="col-md-4 map-data" *ngIf="distanceData && distanceData.distance">
       <div class="distance">
         <div class="subtitle">
           Distance
@@ -103,7 +103,7 @@
         <div class="subtitle">
           Nearby Restaurants
           <i class="fas fa-utensils restaurants-icon"></i>
-          <button type="button" class="btn btn-outline-primary btn-sm" (click)="restaurantCollapse = !restaurantCollapse" [attr.aria-expanded]="!restaurantCollapse"
+          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="restaurantCollapse = !restaurantCollapse" [attr.aria-expanded]="!restaurantCollapse"
             aria-controls="restaurant-collapse">
             {{restaurantCollapse ? "Hide" : "Show"}}
           </button>
@@ -124,6 +124,36 @@
                   </span>
                 </ng-template>
                 <ngb-rating [(rate)]="restaurant.rating" [starTemplate]="star" [readonly]="true" max="5"></ngb-rating>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hotels">
+        <div class="subtitle">
+          Nearby Hotels
+          <i class="fas fa-hotel hotel-icon"></i>
+          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="hotelCollapse = !hotelCollapse" [attr.aria-expanded]="!hotelCollapse"
+            aria-controls="hotel-collapse">
+            {{hotelCollapse ? "Hide" : "Show"}}
+          </button>
+        </div>
+        <div id="hotel-collapse" [ngbCollapse]="!hotelCollapse">
+          <div *ngFor="let hotel of nearbyHotels">
+            <div class="hotel-data">
+              <div class="hotel-name" [ngbTooltip]="hotel.vicinity">
+                {{hotel.name}}
+              </div>
+              <div>
+                <ng-template #star let-fill="fill">
+                  <span class="star" [class.full]="fill === 100">
+                    <span class="half" [style.width.%]="fill">
+                      <i class="far fa-star"></i>
+                    </span>
+                    <i class="far fa-star"></i>
+                  </span>
+                </ng-template>
+                <ngb-rating [(rate)]="hotel.rating" [starTemplate]="star" [readonly]="true" max="5"></ngb-rating>
               </div>
             </div>
           </div>

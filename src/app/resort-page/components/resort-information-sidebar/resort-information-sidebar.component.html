@@ -26,28 +26,28 @@
       <div class="lifts">
         <h6>Total Lifts: {{resort.total_lifts}}</h6>
         <div class="lift-list">
-          <div>
+          <div *ngIf="resort.gondolas > 0">
             Gondolas: {{resort.gondolas}}
           </div>
-          <div>
+          <div *ngIf="resort.high_speed_quad > 0">
             High Speed Quad Chair: {{resort.high_speed_quad}}
           </div>
-          <div>
+          <div *ngIf="resort.high_speed_six > 0">
             High Speed Six Chair: {{resort.high_speed_six}}
           </div>
-          <div>
+          <div *ngIf="resort.surface_lift > 0">
             Surface Lift: {{resort.surface_lift}}
           </div>
-          <div>
+          <div *ngIf="resort.double_chair > 0">
             Double Chair: {{resort.double_chair}}
           </div>
-          <div>
+          <div *ngIf="resort.triple_chair > 0">
             Triple Chair: {{resort.triple_chair}}
           </div>
-          <div>
+          <div *ngIf="resort.quad_lift > 0">
             Quad Chair: {{resort.quad_lift}}
           </div>
-          <div>
+          <div *ngIf="resort.eight_pers_lift > 0">
             Eight Person Chair: {{resort.eight_pers_lift}}
           </div>
         </div>

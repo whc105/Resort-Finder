@@ -23,11 +23,19 @@ export class FetchMapsDataService {
     })
   }
 
-  getRating(location) {
+  getRestaurants(location) {
     return fetch(`/api/getNearbyRestaurants/${location}`, this.init).then((response) => {
       return response.json();
     }).then((nearbyRestaurants) => {
       return nearbyRestaurants;
+    })
+  }
+
+  getHotels(location) {
+    return fetch(`/api/getNearbyHotels/${location}`, this.init).then((response) => {
+      return response.json();
+    }).then((hotels) => {
+      return hotels;
     })
   }
 }
