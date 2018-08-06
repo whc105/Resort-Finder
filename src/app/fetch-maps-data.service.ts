@@ -3,21 +3,31 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchMapsDataService {
+
+  private init = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  }
 
   constructor() { }
 
   getDistance(location) {
-    const init = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    }
-    return fetch(`/api/getDistance/${location}`, init).then((response) => {
+    return fetch(`/api/getDistance/${location}`, this.init).then((response) => {
       return response.json();
     }).then((distance) => {
       return distance;
+    })
+  }
+
+  getRating(location) {
+    return fetch(`/api/getNearbyRestaurants/${location}`, this.init).then((response) => {
+      return response.json();
+    }).then((nearbyRestaurants) => {
+      return nearbyRestaurants;
     })
   }
 }

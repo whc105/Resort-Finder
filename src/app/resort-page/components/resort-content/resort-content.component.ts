@@ -17,6 +17,7 @@ export class ResortContentComponent implements OnInit {
   private ticketPriceCostBasis;
   private mapContent: string;
   private distanceData: any;
+  private nearbyRestaurants: any[] = [];
 
   constructor(
     public sanitizer: DomSanitizer,
@@ -27,7 +28,11 @@ export class ResortContentComponent implements OnInit {
     this.ticketPriceCostBasis = this.resort.lift_tickets - 55;
     this.mapContent = `https://www.google.com/maps/embed/v1/place?q=${this.resort.resort_name}&key=${googleAPIKey}`;
     this.fetchMapsDataService.getDistance(this.resort.resort_name).then((distance) => {
-      this.distanceData = distance.rows[0].elements[0];
+      this.distanceData = distance[0].elements[0];
     });
+
+    this.fetchMapsDataService.getRating(this.resort.resort_name).then((nearbyRestaurants) => {
+      this.nearbyRestaurants = nearbyRestaurants;
+    })
   }
 }

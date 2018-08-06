@@ -33,8 +33,21 @@
 
 .distance {
     text-align: left;
+    padding-bottom: 5px;
 }
 
 .duration {
     text-align: left;
+    padding-bottom: 5px;
+}
+
+.restaurants {
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.restaurant-data {
+    border-top: 1px solid #e7e7e7;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }

@@ -15,6 +15,8 @@ export class LocationSelectorComponent implements OnInit {
   public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>([]);
   public selectedLocations: string[] = [];
   public isCollapsed: boolean[] = Array(7).fill(true);
+  public area: any[] = [];
+
   constructor(
     private fetchLocationsService: FetchLocationsService
   ) {}
