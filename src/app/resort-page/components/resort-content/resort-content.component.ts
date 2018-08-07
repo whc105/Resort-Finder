@@ -2,8 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { FetchMapsDataService } from '../../../fetch-maps-data.service';
+import { FetchResortsService } from '../../../fetch-resorts.service';
+
 import Resort from '../../../../resources/resorts';
 import googleAPIKey from '../../../../resources/key';
+
 
 @Component({
   selector: 'resort-content',
@@ -13,18 +16,20 @@ import googleAPIKey from '../../../../resources/key';
 export class ResortContentComponent implements OnInit {
 
   @Input() resort: Resort;
-  private restaurantCollapse = false;
-  private hotelCollapse = false;
+  private restaurantCollapse: boolean = false;
+  private hotelCollapse: boolean = false;
   private startingLocation: string = "New York City"
-  private ticketPriceCostBasis;
+  private ticketPriceCostBasis: number;
   private mapContent: any;
   private distanceData: any;
   private nearbyRestaurants: any[] = [];
   private nearbyHotels: any[] = [];
+  private resortLink: any;
 
   constructor(
     public sanitizer: DomSanitizer,
-    public fetchMapsDataService: FetchMapsDataService
+    public fetchMapsDataService: FetchMapsDataService,
+    public fetchResortsService: FetchResortsService
   ) {}
 
   ngOnInit() {
@@ -41,7 +46,7 @@ export class ResortContentComponent implements OnInit {
 
     this.fetchMapsDataService.getHotels(this.resort.resort_name).then((nearbyHotels) => {
       this.nearbyHotels = nearbyHotels
-    })
+    });
   }
   
   sanitizeURL(url: string) {

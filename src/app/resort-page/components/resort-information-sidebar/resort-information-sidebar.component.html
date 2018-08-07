@@ -52,6 +52,9 @@
           </div>
         </div>
       </div>
+      <div class="web-link" *ngIf="resortLink">
+        <h6><a [href]="resortLink.official_website">{{resort.resort_name}}'s Website</a></h6>
+      </div>
     </div>
   </div>
 </div>

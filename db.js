@@ -36,4 +36,11 @@ const ResortSchema = new Schema({
 
 mongoose.model("Resort", ResortSchema);
 
+const ResortMapSchema = new Schema({
+    SkiArea: Object,
+    Region: Array
+})
+
+mongoose.model("ResortMap", ResortMapSchema);
+
 mongoose.connect("mongodb://localhost:27017/skiresorts", { useNewUrlParser: true });

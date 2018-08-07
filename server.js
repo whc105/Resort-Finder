@@ -9,9 +9,12 @@ app.set('port', port);
 const getResortsAPI = require('./api/getResorts');
 const getLocationsAPI = require('./api/getLocations');
 const getMapsAPI = require('./api/getMapsAPI');
+const getSkiMapAPI = require('./api/getSkiMap');
+
 getResortsAPI(app);
 getLocationsAPI(app);
 getMapsAPI(app);
+getSkiMapAPI(app);
 
 require('./db');
 

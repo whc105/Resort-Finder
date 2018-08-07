@@ -10,7 +10,10 @@ import Resort from '../../../../resources/resorts';
 export class ResortInformationSidebarComponent implements OnInit {
 
   @Input() resort: Resort;
+  @Input() resortLink: any;
+
   constructor() { }
 
   ngOnInit() {}
+
 }

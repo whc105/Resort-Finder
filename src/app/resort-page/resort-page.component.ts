@@ -11,6 +11,7 @@ import Resort from '../../resources/resorts';
 export class ResortPageComponent implements OnInit {
 
   public resort: Resort;
+  public resortLink: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +22,9 @@ export class ResortPageComponent implements OnInit {
     const resort_name = this.activatedRoute.snapshot.paramMap.get("resort_name");
     this.fetchResortsService.fetchResort(resort_name).then((resort) => {
       this.resort = resort;
+      this.fetchResortsService.fetchResortWebsite(this.resort.resort_name).then((resortLink) => {
+        this.resortLink = resortLink;
+      })
     });
   }
 }
