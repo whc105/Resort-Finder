@@ -23,7 +23,9 @@ export class ResortPageComponent implements OnInit {
     this.fetchResortsService.fetchResort(resort_name).then((resort) => {
       this.resort = resort;
       this.fetchResortsService.fetchResortWebsite(this.resort.resort_name).then((resortLink) => {
-        this.resortLink = resortLink;
+        if (resortLink == {}) {
+          this.resortLink = resortLink;
+        }
       })
     });
   }
