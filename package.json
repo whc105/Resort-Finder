@@ -28,6 +28,7 @@
     "@progress/kendo-angular-l10n": "^1.1.0",
     "@progress/kendo-theme-bootstrap": "^2.13.7",
     "@progress/kendo-theme-default": "latest",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "cors": "^2.8.4",
@@ -38,6 +39,7 @@
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.0.0",
     "webpack": "^4.16.0",
+    "xml2js": "^0.4.19",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -43,4 +43,13 @@ export class FetchResortsService {
     })
   }
 
+  //Takes an ID number to find the latest available trailmap
+  fetchTrailMap(ID) {
+    return fetch(`/api/getResortTrailMap/${ID}`).then((response) => {
+      return response.json()
+    }).then((resortMap) => {
+      return resortMap
+    })
+  }
+
 }

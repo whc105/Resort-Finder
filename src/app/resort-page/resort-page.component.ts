@@ -12,6 +12,7 @@ export class ResortPageComponent implements OnInit {
 
   public resort: Resort;
   public resortLink: any;
+  public resortMap: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,8 +26,11 @@ export class ResortPageComponent implements OnInit {
       this.fetchResortsService.fetchResortWebsite(this.resort.resort_name).then((resortLink) => {
         if (Object.keys(resortLink).length !== 0) {
           this.resortLink = resortLink;
+          this.fetchResortsService.fetchTrailMap(this.resortLink.id).then((resortMap) => {
+            this.resortMap = resortMap;
+          });
         }
-      })
+      });
     });
   }
 }

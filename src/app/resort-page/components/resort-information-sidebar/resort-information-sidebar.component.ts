@@ -11,6 +11,7 @@ export class ResortInformationSidebarComponent implements OnInit {
 
   @Input() resort: Resort;
   @Input() resortLink: any;
+  @Input() resortMap: any;
 
   constructor() { }
 
