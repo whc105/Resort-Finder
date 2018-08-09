@@ -13,8 +13,18 @@ export class ResortInformationSidebarComponent implements OnInit {
   @Input() resortLink: any;
   @Input() resortMap: any;
 
+  public openedMap: boolean = false;
+
   constructor() { }
 
   ngOnInit() {}
+
+  closeTrailMap() {
+    this.openedMap = false;
+  }
+
+  openTrailMap() {
+    this.openedMap = true;
+  }
 
 }

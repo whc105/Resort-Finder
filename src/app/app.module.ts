@@ -18,6 +18,8 @@ import { ResortInformationSidebarComponent } from './resort-page/components/reso
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
     ),
     DropDownsModule,
     BrowserAnimationsModule,
+    DialogsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

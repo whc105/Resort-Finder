@@ -53,9 +53,17 @@
         </div>
       </div>
       <div class="web-link" *ngIf="resortLink">
-        <h6><a [href]="resortLink.official_website">{{resort.resort_name}}'s Website</a></h6>
+        <h6>
+          <a [href]="resortLink.official_website">{{resort.resort_name}}'s Website</a>
+        </h6>
         <div *ngIf="resortMap">
-          <h6><a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map</a></h6>
+          <h6>
+            <a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map</a>
+          </h6>
+          <img id="trail-map" [src]="resortMap[0].$.url" *ngIf="!opened" (click)="openTrailMap()">
+          <kendo-dialog title="Trail Map" *ngIf="openedMap" (close)="closeTrailMap()">
+            <img id="trail-map-large" [src]="resortMap[0].$.url">
+          </kendo-dialog>
         </div>
       </div>
     </div>
