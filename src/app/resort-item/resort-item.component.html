@@ -1,13 +1,13 @@
-<div class="row resort-item">
-  <div class="col-md-6">
+<div class="resort-item">
+  <div id="name">
     <div>
-      {{resort.resort_name}}
+      Name: {{resort.resort_name}}
     </div>
     <div>
-      {{resort.location}}
+      Location: {{resort.location}}
     </div>
   </div>
-  <div class="col-md-2">
+  <div id="lift">
     <div>
       Lifts: {{resort.total_runs}}
     </div>
@@ -15,7 +15,7 @@
       Runs: {{resort.total_lifts}}
     </div>
   </div>
-  <div class="col-md-2">
+  <div id="terrain">
     <div>
       Terrain: {{resort.skiable_terrain}}
     </div>
@@ -23,11 +23,7 @@
       Vertical: {{resort.vertical_drop}}
     </div>
   </div>
-  <div class="col-md-2 select-resort-button">
-    <div class="select-resort-button-series">
-      <button type="button" class="btn select-resort" (click)="navigateToResort($event)">
-        <i class="fas fa-angle-right"></i>
-      </button>
-    </div>
+  <div id="select-resort-button" (click)="navigateToResort($event)">
+    <span class="k-icon k-i-arrow-chevron-right arrow"></span>
   </div>
 </div>

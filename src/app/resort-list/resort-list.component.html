@@ -1,24 +1,15 @@
-<div class="resort-list row">
-  <div class="col-md-2 sidebar">
+<div class="main">
+  <div class="sidebar">
     <sidebar (filters)="filterLocationList($event)"></sidebar>
   </div>
-  <div class="col-md-10 list">
+  <div class="list">
     <div class="title">
-      <h4>All Resorts</h4>
+      All Resorts
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        Location
+    <div class="resort-list">
+      <div *ngFor="let resort of displayedResortList" class="resort-element">
+        <resort-item [resort]=resort></resort-item>
       </div>
-      <div class="col-md-2">
-        Lifts/Runs
-      </div>
-      <div class="col-md-2">
-        Terrain
-      </div>
-    </div>
-    <div *ngFor="let resort of displayedResortList" class="resort-element">
-      <resort-item [resort]=resort></resort-item>
     </div>
   </div>
 </div>

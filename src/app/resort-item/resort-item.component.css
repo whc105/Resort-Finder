@@ -1,31 +1,35 @@
 .resort-item {
-    border: 1px solid steelblue;
-    box-shadow: 1px 1px steelblue;
-}
-
-.select-resort {
-    height: 80%;
-    border-color: steelblue;
-    color: steelblue;
-    background-color: transparent;
-    float: right;
-}
-
-.select-resort:hover {
-    background-color: steelblue;
-}
-
-.select-resort:hover > i {
-    color: white;
-}
-
-.select-resort-button {
     display: flex;
+    flex-direction: row;
+    padding: 5px 0px;
+}
+
+#select-resort-button {
     align-items: center;
     justify-content: center;
-    padding-right: 0px;
+    display: flex;
 }
 
-.select-resort-button-series {
-    width: 90%;
+#select-resort-button:hover {
+    cursor: pointer;
+}
+
+#name {
+    flex: 3 3 0%;
+}
+
+#lift {
+    flex: 1 1 0%;
+}
+
+#terrain {
+    flex: 1 1 0%;
+}
+
+.arrow {
+    font-size: 35px;
+}
+
+.resort-item:hover > div {
+    color: rgb(0, 122, 204);
 }
