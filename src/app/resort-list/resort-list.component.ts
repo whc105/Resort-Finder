@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
-import Resort from '../../resources/resorts';
+import { Resort } from '../../resources/models';
 
 @Component({
   selector: 'resort-list',

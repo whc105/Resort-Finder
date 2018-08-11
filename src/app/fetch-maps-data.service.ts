@@ -38,4 +38,12 @@ export class FetchMapsDataService {
       return hotels;
     })
   }
+
+  getNearbyCity(location) {
+    return fetch(`/api/getNearbyCity/${location}`, this.init).then((response) => {
+      return response.json();
+    }).then((locality) => {
+      return locality;
+    })
+  }
 }

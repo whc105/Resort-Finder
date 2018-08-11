@@ -40,7 +40,7 @@
         </div>
         {{resort.skiable_terrain}} Acres
       </div>
-      <div class="park col-md-4">
+      <div class="park col-md-4" *ngIf="resort.terrain_parks">
         <div class="subtitle">
           Terrain Parks
         </div>
@@ -99,6 +99,13 @@
         </div>
         {{distanceData.duration.text}}
       </div>
+      <div class="nearby-town" *ngIf="locality">
+        <div class="subtitle">
+          Closest Town
+          <i class="far fa-building"></i>
+        </div>
+        {{locality.long_name}}
+      </div>
       <div class="restaurants">
         <div class="subtitle">
           Nearby Restaurants
@@ -111,7 +118,7 @@
         <div id="restaurant-collapse" [ngbCollapse]="!restaurantCollapse">
           <div *ngFor="let restaurant of nearbyRestaurants">
             <div class="restaurant-data">
-              <div class="restaurant-name">
+              <div class="restaurant-name" [ngbTooltip]="restaurant.formatted_address">
                 {{restaurant.name}}
               </div>
               <div>

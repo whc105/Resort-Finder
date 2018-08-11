@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../node_modules/@angular/router';
 import { FetchResortsService } from '../fetch-resorts.service';
-import Resort from '../../resources/resorts';
+import { Resort } from '../../resources/models';
 
 @Component({
   selector: 'resort-page',

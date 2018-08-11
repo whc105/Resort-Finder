@@ -61,7 +61,8 @@
             <a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map</a>
           </h6>
           <img id="trail-map" [src]="resortMap[0].$.url" *ngIf="!opened" (click)="openTrailMap()">
-          <kendo-dialog title="Trail Map" *ngIf="openedMap" (close)="closeTrailMap()">
+          <kendo-dialog *ngIf="openedMap" (close)="closeTrailMap()">
+            <h5 id="trail-map-title">Trail Map</h5>
             <img id="trail-map-large" [src]="resortMap[0].$.url">
           </kendo-dialog>
         </div>

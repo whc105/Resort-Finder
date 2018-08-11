@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import Resort from '../../../../resources/resorts';
+import { Resort } from '../../../../resources/models';
 
 
 @Component({

@@ -5,6 +5,7 @@ module.exports = app => {
         key: "AIzaSyCdouL4ILt_yeXV71VF8brpFy2hMbCQTcg",
         Promise: Promise
     });
+
     app.get('/api/getDistance/:location', (req, res) => {
         client.distanceMatrix({
             origins: "New York City",
@@ -30,7 +31,8 @@ module.exports = app => {
             })
     })
 
-    //Gets the 
+    //Gets 10 nearby hotels
+    //Locality is derived here
     app.get('/api/getNearbyHotels/:location', (req, res) => {
         client.geocode({
             address: req.params.location
@@ -50,10 +52,23 @@ module.exports = app => {
                             vicinity: hotel.vicinity
                         }
                         return fieldedHotel;
-                    })
-
+                    });
                     res.send(nearbyHotels);
                 })
         })
+    });
+
+    //Gets the closest town or city
+    app.get('/api/getNearbyCity/:location', (req, res) => {
+        client.geocode({
+            address: req.params.location
+        }).asPromise().then((response) => {
+            response.json.results[0].address_components.forEach((addressComponent) => {
+                if (addressComponent.types.includes("locality")) {
+                    locality = addressComponent;
+                }
+            });
+            res.send(locality);
+        });
     })
 }

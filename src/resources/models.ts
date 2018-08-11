@@ -1,4 +1,4 @@
-export default interface Resort {
+interface Resort {
     avg_snowfall: number,
     base: number,
     bd_run_pct: number,
@@ -30,3 +30,11 @@ export default interface Resort {
     triple_chair: number,
     vertical_drop: number
 }
+
+interface Locality {
+    long_name: string,
+    short_name: string,
+    types: string[]
+}
+
+export { Resort, Locality }
