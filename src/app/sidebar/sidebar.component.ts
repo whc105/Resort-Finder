@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder } from "@angular/forms"
+
 
 @Component({
   selector: 'sidebar',
@@ -9,30 +11,33 @@ export class SidebarComponent implements OnInit {
 
   @Output() filters: EventEmitter<any> = new EventEmitter();
 
-  private resortSize = {
-    large: true,
-    medium: true,
-    small: true
-  };
+  public filterInputs = this.formBuilder.group({
+    trails: [25],
+    size: this.formBuilder.group({
+      large: [true],
+      medium: [true],
+      small: [true]
+    }),
+    night: [false],
+    regions: [] //The regions selected from the region selector
+  })
 
-  private areaFilters = {
-    locationList: [],
-    night: false
-  }
-
-  constructor() {}
+  constructor(
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
   }
 
-  locationPicker(locationList) {
-    this.areaFilters.locationList = locationList;
-    this.filters.emit(this.areaFilters);
+  regionSelector(regions) {
+    this.filterInputs.patchValue({
+      regions: regions
+    })
+    this.filters.emit(this.filterInputs.value);
   }
 
   nightPicker(e) {
-    this.areaFilters.night = this.areaFilters.night;
-    this.filters.emit(this.areaFilters);
+    this.filters.emit(this.filterInputs.value);
   }
 
 }

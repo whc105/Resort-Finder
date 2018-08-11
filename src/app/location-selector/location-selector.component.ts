@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FetchLocationsService } from '../fetch-locations.service';
-import { BehaviorSubject } from '../../../node_modules/rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { regions } from '../../resources/predefined-data';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'location-selector',

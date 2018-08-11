@@ -4,7 +4,12 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -16,9 +21,6 @@ import { ResortPageComponent } from './resort-page/resort-page.component';
 import { HomeComponent } from './home/home.component';
 import { ResortInformationSidebarComponent } from './resort-page/components/resort-information-sidebar/resort-information-sidebar.component';
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
-import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogsModule } from '@progress/kendo-angular-dialog';
 
 
 const appRoutes: Routes = [
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     DropDownsModule,
     BrowserAnimationsModule,
     DialogsModule,
+    InputsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

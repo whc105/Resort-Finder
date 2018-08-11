@@ -32,17 +32,17 @@ export class ResortListComponent implements OnInit {
     });
   };
 
-  filterLocationList(locationFilters) {
+  filterLocationList(filters) {
     //Makes a shallow copy
     this.displayedResortList = this.resortList.slice();
-    if (locationFilters.locationList.length !== 0) {
-      this.selectedLocationList = locationFilters.locationList;
+    if (filters.regions.length !== 0) {
+      this.selectedLocationList = filters.regions;
       this.displayedResortList = this.displayedResortList.filter((resort) => {
         return this.selectedLocationList.includes(resort.location);
       });
     }
 
-    if (locationFilters.night) {
+    if (filters.night) {
       this.displayedResortList = this.displayedResortList.filter((resort) => {
         return typeof resort.night_skiing === 'number'
       })

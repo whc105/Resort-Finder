@@ -1,38 +1,44 @@
-<div class="sidebar">
+<div class="sidebar" [formGroup]="filterInputs">
   <div id="sidebar">
     <h5 id="search">
       Search
     </h5>
   </div>
-  <div class="resort-size">
+  <div class="resort-size" formGroupName="size">
     <h6 id="size">
       Resort Size
     </h6>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" [(ngModel)]="resortSize.large"> Large
+        <input type="checkbox" formControlName="large"> Large
       </label>
     </div>
     <div class="btn-group-toggle">
       <label>
-      <input type="checkbox" [(ngModel)]="resortSize.medium"> Medium
+        <input type="checkbox" formControlName="medium"> Medium
       </label>
     </div>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" [(ngModel)]="resortSize.small"> Small
+        <input type="checkbox" formControlName="small"> Small
       </label>
     </div>
   </div>
-  <div class="resort-size">
-    <h6 id="size">
+  <div class="terrain-filters">
+    <h6 id="night">
       Night Skiing
     </h6>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" [(ngModel)]="areaFilters.night" (change)="nightPicker($event)"> Night Runs
+        <input type="checkbox" formControlName="night" (change)="nightPicker($event)"> Night Runs
       </label>
     </div>
+    <h6>
+      Trails: {{filterInputs.get('trails').value}}
+    </h6>
+    <div class="slider">
+      <kendo-slider tickPlacement="none" [min]="1" [max]="347" formControlName="trails"></kendo-slider>
+    </div>
   </div>
-  <location-selector (locationEvent)="locationPicker($event)"></location-selector>
+  <location-selector (locationEvent)="regionSelector($event)"></location-selector>
 </div>
