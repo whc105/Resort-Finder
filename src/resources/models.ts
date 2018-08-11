@@ -17,7 +17,6 @@ interface Resort {
     quad_lift: number,
     region: string,
     resort_name: string,
-    review_score: number,
     season_close: string,
     season_open: string,
     skiable_terrain: number,

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FetchLocationsService } from '../fetch-locations.service';
 import { BehaviorSubject } from '../../../node_modules/rxjs';
+import { regions } from '../../resources/predefined-data';
 
 @Component({
   selector: 'location-selector',
@@ -12,10 +13,9 @@ export class LocationSelectorComponent implements OnInit {
 
   @Output() locationEvent: EventEmitter<any> = new EventEmitter();
 
-  public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>([]);
+  public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>(regions);
   public selectedLocations: string[] = [];
   public isCollapsed: boolean[] = Array(7).fill(true);
-  public area: any[] = [];
 
   constructor(
     private fetchLocationsService: FetchLocationsService

@@ -1,3 +1,3 @@
-# SkiResortFinder
+# SKI MTN Finder
 
-Finds ski resorts
+Resort Trail Maps are from Skimap.org
