@@ -15,13 +15,9 @@ export class SidebarComponent implements OnInit {
     trails: [15],
     terrain: [150],
     vertical: [750],
-    size: this.formBuilder.group({
-      large: [true],
-      medium: [true],
-      small: [true]
-    }),
     night: [false],
     regions: [[]], //The regions selected from the region selector
+    searchValue: [""]
   })
 
   constructor(

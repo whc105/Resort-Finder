@@ -9,6 +9,10 @@
     border-bottom: 1px solid #DDD;
 }
 
-#search {
+#filter {
     padding-top: 10px;
+}
+
+.search {
+    padding: 10px 0px;
 }

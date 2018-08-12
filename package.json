@@ -28,6 +28,7 @@
     "@progress/kendo-angular-dialog": "^3.7.0",
     "@progress/kendo-angular-dropdowns": "^3.0.2",
     "@progress/kendo-angular-inputs": "^3.2.0",
+    "@progress/kendo-angular-intl": "^1.4.0",
     "@progress/kendo-angular-l10n": "^1.1.0",
     "@progress/kendo-theme-bootstrap": "^2.13.7",
     "@progress/kendo-theme-default": "latest",
@@ -43,8 +44,7 @@
     "rxjs-compat": "^6.0.0",
     "webpack": "^4.16.0",
     "xml2js": "^0.4.19",
-    "zone.js": "^0.8.26",
-    "@progress/kendo-angular-intl": "^1.4.0"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",

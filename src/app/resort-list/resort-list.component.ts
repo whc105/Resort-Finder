@@ -56,6 +56,13 @@ export class ResortListComponent implements OnInit {
     this.displayedResortList = this.displayedResortList.filter((resort) => {
       return resort.total_runs >= filters.trails && resort.skiable_terrain >= filters.terrain && resort.vertical_drop >= filters.vertical;
     });
+
+    //Filters resort by the inputted search value
+    if (filters.searchValue) {
+      this.displayedResortList = this.displayedResortList.filter((resort) => {
+        return resort.resort_name.toLowerCase().includes(filters.searchValue.toLowerCase());
+      })
+    }
   }
 
 }

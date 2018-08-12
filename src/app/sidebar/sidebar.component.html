@@ -1,38 +1,16 @@
 <div class="sidebar" [formGroup]="filterInputs">
   <div id="sidebar">
-    <h5 id="search">
-      Search
+    <h5 id="filter">
+      Filters
     </h5>
   </div>
-  <div class="resort-size" formGroupName="size">
-    <h6 id="size">
-      Resort Size
+  <div class="search">
+    <h6>
+      Search
     </h6>
-    <div class="btn-group-toggle">
-      <label>
-        <input type="checkbox" formControlName="large"> Large
-      </label>
-    </div>
-    <div class="btn-group-toggle">
-      <label>
-        <input type="checkbox" formControlName="medium"> Medium
-      </label>
-    </div>
-    <div class="btn-group-toggle">
-      <label>
-        <input type="checkbox" formControlName="small"> Small
-      </label>
-    </div>
+    <input class="form-control" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)"/>
   </div>
   <div class="terrain-filters">
-    <h6 id="night">
-      Night Skiing
-    </h6>
-    <div class="btn-group-toggle">
-      <label>
-        <input type="checkbox" formControlName="night" (change)="emitFilterData($event)"> Night Runs
-      </label>
-    </div>
     <h6>
       Trails: {{filterInputs.get('trails').value}}
     </h6>
@@ -50,6 +28,14 @@
     </h6>
     <div class="slider">
       <kendo-slider [showButtons]="false" tickPlacement="none" [min]="65" [max]="7477" formControlName="vertical" (valueChange)="emitFilterData($event)"></kendo-slider>
+    </div>
+    <h6 id="night">
+      Night Skiing
+    </h6>
+    <div class="btn-group-toggle">
+      <label>
+        <input type="checkbox" formControlName="night" (change)="emitFilterData($event)"> Night Runs
+      </label>
     </div>
   </div>
   <location-selector (locationEvent)="regionSelector($event)"></location-selector>
