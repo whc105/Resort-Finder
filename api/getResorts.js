@@ -23,4 +23,14 @@ module.exports = app => {
             }
         })
     });
+
+    app.get('/api/getResorts/:region', (req, res) => {
+        Resort.find({region: req.params.region}, (err, resorts) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(resorts);
+            }
+        })
+    })
 }

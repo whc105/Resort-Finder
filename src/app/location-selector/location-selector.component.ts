@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FetchLocationsService } from '../fetch-locations.service';
 import { BehaviorSubject } from 'rxjs';
 import { regions } from '../../resources/predefined-data';
-import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'location-selector',
@@ -14,16 +14,21 @@ export class LocationSelectorComponent implements OnInit {
 
   @Output() locationEvent: EventEmitter<any> = new EventEmitter();
 
-  public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>(regions);
+  public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>(this.getRegions());
   public selectedLocations: string[] = [];
-  public isCollapsed: boolean[] = Array(7).fill(true);
+  public isCollapsed: boolean[] = Array(this.locations.getValue().length).fill(true);
 
   constructor(
-    private fetchLocationsService: FetchLocationsService
-  ) {}
+    private fetchLocationsService: FetchLocationsService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getLocations();
+    const paramRegion = this.activatedRoute.snapshot.params.region;
+    if (paramRegion !== "All") {
+      this.isCollapsed[0] = false;
+    }
   }
 
   addLocations(e, location) {
@@ -36,9 +41,21 @@ export class LocationSelectorComponent implements OnInit {
   }
 
   getLocations() {
-    this.fetchLocationsService.getLocations()
-    .then((locations) => {
-      this.locations.next(locations.value);
-    });
+    const paramRegion = this.activatedRoute.snapshot.params.region;
+    this.fetchLocationsService.getLocations(paramRegion)
+      .then((locations) => {
+        this.locations.next(locations.value);
+      });
+  }
+
+  getRegions() {
+    const paramRegion = this.activatedRoute.snapshot.params.region;
+    if (paramRegion !== "All") {
+      return regions.filter((location) => {
+        return location.region === paramRegion;
+      });
+    } else {
+      return regions;
+    }
   }
 }

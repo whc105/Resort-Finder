@@ -10,13 +10,20 @@ export class FetchResortsService {
 
   public resorts: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
 
-  constructor() {}
+  constructor() { }
 
-  getResorts() {
-    return this.fetchResorts().then((result) => {
-      this.resorts.next(result);
-      return this.resorts
-    }); 
+  getResorts(region) {
+    if (region === "All") {
+      return this.fetchResorts().then((result) => {
+        this.resorts.next(result);
+        return this.resorts
+      });
+    } else {
+      return this.fetchResortsByRegion(region).then((result) => {
+        this.resorts.next(result);
+        return this.resorts
+      });
+    }
   }
 
   fetchResorts() {
@@ -25,6 +32,15 @@ export class FetchResortsService {
     }).then((resorts) => {
       return resorts;
     })
+  }
+
+  //Finds all resorts by region
+  fetchResortsByRegion(region) {
+    return fetch(`/api/getResorts/${region}`).then((response) => {
+      return response.json();
+    }).then((resorts) => {
+      return resorts;
+    });
   }
 
   fetchResort(name) {

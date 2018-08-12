@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -11,17 +12,17 @@ export class HomeComponent implements OnInit {
     rockymtn: false,
   }
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
-  flipOver(event, field) {
-    this.hoverFields[field] = false;
+  redirect(region) {
+    this.router.navigate([`/resorts/${region}`])
   }
 
-  flipBack(event, field) {
-    this.hoverFields[field] = true;
-  }
+
 
 }

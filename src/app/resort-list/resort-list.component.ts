@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
 import { Resort } from '../../resources/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'resort-list',
@@ -16,16 +17,18 @@ export class ResortListComponent implements OnInit {
 
   constructor(
     private fetchResortsService: FetchResortsService,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    this.getResortList();
+    const region = this.activatedRoute.snapshot.params.region;
+    this.getResortList(region);
   }
 
-  getResortList() {
+  getResortList(region) {
     return this.fetchResortsService
-      .getResorts()
+      .getResorts(region)
       .then(resorts => {
         this.displayedResortList = resorts.value;
         this.resortList = resorts.value;

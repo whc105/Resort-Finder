@@ -2,4 +2,16 @@
   <div class="title">
     Where Would You Like
   </div>
+  <div class="usa">
+    <button kendoButton (click)="redirect('Northeast')" [look]="'outline'">Northeast</button>
+    <button kendoButton (click)="redirect('Midwest')" [look]="'outline'">Midwest</button>
+    <button kendoButton (click)="redirect('Rocky Mountains')" [look]="'outline'">Rocky Mountains</button>
+    <button kendoButton (click)="redirect('West Coast')" [look]="'outline'">West Coast</button>
+  </div>
+  <div class="abroad">
+    <button kendoButton (click)="redirect('Canada')" [look]="'outline'">Canada</button>
+    <button kendoButton (click)="redirect('Europe')" [look]="'outline'">Europe</button>
+    <button kendoButton (click)="redirect('Southern Hemisphere')" [look]="'outline'">Southern Hemisphere</button>
+    <button kendoButton (click)="redirect('All')" [look]="'outline'">Everywhere!</button>
+  </div>
 </div>

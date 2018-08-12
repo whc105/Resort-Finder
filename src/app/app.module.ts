@@ -21,12 +21,13 @@ import { ResortPageComponent } from './resort-page/resort-page.component';
 import { HomeComponent } from './home/home.component';
 import { ResortInformationSidebarComponent } from './resort-page/components/resort-information-sidebar/resort-information-sidebar.component';
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
-
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'resortlists', component: ResortListComponent },
-  { path: 'resortlists/:resort_name', component: ResortPageComponent }
+  { path: "", component: HomeComponent },
+  { path: "resorts", component: ResortListComponent },
+  { path: "resorts/:region", component: ResortListComponent }, //Add route guard later
+  { path: "resorts/:region/:resort_name", component: ResortPageComponent }
 ]
 
 @NgModule({
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     DialogsModule,
     InputsModule,
+    ButtonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,3 +3,15 @@
     font-weight: bold;
     text-align: center;
 }
+
+.usa {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+}
+
+.abroad {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+}

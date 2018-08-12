@@ -10,9 +10,14 @@ export class FetchLocationsService {
 
   constructor() { }
 
-  getLocations() {
+  getLocations(regions) {
     return this.fetchLocations().then((locations) => {
-      this.locations.next(locations)
+      if (regions !== "All") {
+        locations = locations.filter((location) => {
+          return location.region === regions
+        });
+      }
+      this.locations.next(locations);
       return this.locations;
     })
   }
