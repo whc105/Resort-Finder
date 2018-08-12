@@ -1,0 +1,137 @@
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 20px;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-body {
+    padding: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+.usa {
+    display: flex;
+    flex-direction: row;
+}
+
+.rockymtn {
+    flex: 4 4 0%;
+    background-color: rgb(0, 122, 204, .3);
+    border-radius: 10px;
+}
+
+.group-1 {
+    display: flex;
+    flex-direction: row;
+    flex: 6 6 0%;
+}
+
+.group-1 > div {
+    flex: 1 1 0%;
+    border-radius: 10px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.northeast {
+    background-color: rgb(130, 201, 50, .3);
+}
+
+.midwest {
+    background-color: rgb(22, 35, 49, .3);
+}
+
+.westcoast {
+    background-color: rgb(205, 164, 132, .3);
+
+}
+
+.resort-link {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.resorts {
+    background-color: white;
+}
+
+.btn-rockymtn {
+    border: 1px solid rgb(0, 122, 204, 1);
+    color: rgb(0, 122, 204, 1);
+}
+
+.btn-northeast {
+    border: 1px solid rgb(130, 201, 50, 1);
+    color: rgb(130, 201, 50, 1);
+}
+
+.btn-midwest {
+    border: 1px solid rgb(22, 35, 49, 1);
+    color: rgb(22, 35, 49, 1);
+}
+
+.btn-westcoast {
+    border: 1px solid rgb(205, 164, 132, 1);
+    color: rgb(205, 164, 132, 1);
+}
+
+.others {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0px;
+}
+
+.south {
+    flex: 1 1 0%;
+    margin-right: 5px;
+}
+
+.eu {
+    flex: 1 1 0%;
+    margin-right: 5px;
+}
+
+.canada {
+    flex: 1 1 0%;
+    background-color: rgb(255, 163, 0, .7);
+    border-radius: 10px;
+}
+
+.btn-canada {
+    border: 1px solid rgb(255, 174, 0);
+    color: rgb(255, 174, 0);
+}
+
+.southern-hemisphere {
+    background-color: rgb(250, 196, 199, .8);
+    border-radius: 10px;
+}
+
+.btn-south {
+    border: 1px solid rgb(248, 167, 171);
+    color: rgb(248, 167, 171);
+}
+
+.europe {
+    background-color: rgb(129, 180, 177, .9);
+    border-radius: 10px;
+}
+
+.btn-europe {
+    border: 1px solid rgb(129, 180, 177, 1);
+    color: rgb(129, 180, 177, 1);
+}

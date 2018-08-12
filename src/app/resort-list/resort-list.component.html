@@ -3,9 +3,6 @@
     <sidebar (filters)="filterLocationList($event)"></sidebar>
   </div>
   <div class="list">
-    <div class="title">
-      All Resorts
-    </div>
     <div class="resort-list">
       <div *ngFor="let resort of displayedResortList" class="resort-element">
         <resort-item [resort]=resort></resort-item>
