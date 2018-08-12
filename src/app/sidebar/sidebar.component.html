@@ -30,14 +30,26 @@
     </h6>
     <div class="btn-group-toggle">
       <label>
-        <input type="checkbox" formControlName="night" (change)="nightPicker($event)"> Night Runs
+        <input type="checkbox" formControlName="night" (change)="emitFilterData($event)"> Night Runs
       </label>
     </div>
     <h6>
       Trails: {{filterInputs.get('trails').value}}
     </h6>
     <div class="slider">
-      <kendo-slider tickPlacement="none" [min]="1" [max]="347" formControlName="trails"></kendo-slider>
+      <kendo-slider [showButtons]="false" tickPlacement="none" [min]="1" [max]="347" formControlName="trails" (valueChange)="emitFilterData($event)"></kendo-slider>
+    </div>
+    <h6>
+      Terrain: {{filterInputs.get('terrain').value}}
+    </h6>
+    <div class="slider">
+      <kendo-slider [showButtons]="false" tickPlacement="none" [min]="9" [max]="24710" formControlName="terrain" (valueChange)="emitFilterData($event)"></kendo-slider>
+    </div>
+    <h6>
+      Vertical Drop: {{filterInputs.get('vertical').value}}
+    </h6>
+    <div class="slider">
+      <kendo-slider [showButtons]="false" tickPlacement="none" [min]="65" [max]="7477" formControlName="vertical" (valueChange)="emitFilterData($event)"></kendo-slider>
     </div>
   </div>
   <location-selector (locationEvent)="regionSelector($event)"></location-selector>

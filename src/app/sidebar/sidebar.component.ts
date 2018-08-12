@@ -12,14 +12,16 @@ export class SidebarComponent implements OnInit {
   @Output() filters: EventEmitter<any> = new EventEmitter();
 
   public filterInputs = this.formBuilder.group({
-    trails: [25],
+    trails: [15],
+    terrain: [150],
+    vertical: [750],
     size: this.formBuilder.group({
       large: [true],
       medium: [true],
       small: [true]
     }),
     night: [false],
-    regions: [] //The regions selected from the region selector
+    regions: [[]], //The regions selected from the region selector
   })
 
   constructor(
@@ -36,8 +38,10 @@ export class SidebarComponent implements OnInit {
     this.filters.emit(this.filterInputs.value);
   }
 
-  nightPicker(e) {
+  emitFilterData(e) {
     this.filters.emit(this.filterInputs.value);
   }
+
+
 
 }

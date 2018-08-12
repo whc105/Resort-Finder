@@ -58,7 +58,7 @@
           ${{ticketPriceCostBasis}} more than average
         </div>
         <div *ngIf="ticketPriceCostBasis < 0">
-          ${{ticketPriceCostBasis}} less than average
+          ${{ticketPriceCostBasis*-1}} less than average
         </div>
         <div *ngIf="ticketPriceCostBasis == 0">
           Average Lift Ticket Price
