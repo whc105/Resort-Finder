@@ -16,8 +16,9 @@ export class SidebarComponent implements OnInit {
     terrain: [150],
     vertical: [750],
     night: [false],
+    open: [false],
     regions: [[]], //The regions selected from the region selector
-    searchValue: [""]
+    searchValue: [""],
   })
 
   constructor(

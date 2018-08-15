@@ -8,7 +8,7 @@
     <h6>
       Search
     </h6>
-    <input class="form-control" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)"/>
+    <input class="form-control" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)" />
   </div>
   <div class="terrain-filters">
     <h6>
@@ -29,12 +29,17 @@
     <div class="slider">
       <kendo-slider [showButtons]="false" tickPlacement="none" [min]="65" [max]="7477" formControlName="vertical" (valueChange)="emitFilterData($event)"></kendo-slider>
     </div>
-    <h6 id="night">
-      Night Skiing
+    <h6 id="availability">
+      Resort Availability
     </h6>
     <div class="btn-group-toggle">
       <label>
         <input type="checkbox" formControlName="night" (change)="emitFilterData($event)"> Night Runs
+      </label>
+    </div>
+    <div class="btn-group-toggle">
+      <label>
+        <input type="checkbox" formControlName="open" (change)="emitFilterData($event)"> Open
       </label>
     </div>
   </div>

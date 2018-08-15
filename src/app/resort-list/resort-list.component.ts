@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
 import { Resort } from '../../resources/models';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from "moment";
 
 @Component({
   selector: 'resort-list',
@@ -47,12 +48,19 @@ export class ResortListComponent implements OnInit {
       });
     }
 
-    //Filters resorts with night skiing
-    if (filters.night) {
-      this.displayedResortList = this.displayedResortList.filter((resort) => {
-        return typeof resort.night_skiing === 'number'
-      })
-    }
+    const year = new Date().getFullYear();
+    this.displayedResortList = this.displayedResortList.filter((resort) => {
+      //Filters resorts with night skiing
+      if (filters.night && typeof resort.night_skiing !== 'number') {
+        return false;
+      }
+      
+      //Filters resorts that are open
+      if (filters.open && moment().isBetween(moment(`${resort.season_close}/${year}`, "MM/D/YYYY"), moment(`${resort.season_open}/${year}`, "MM/D/YYYY"))) {
+        return false;
+      }
+      return true;
+    })
 
     //Filters Terrain
     //The resort must have greater than or equal to the inputted Trails, Terrain, and Vertical
