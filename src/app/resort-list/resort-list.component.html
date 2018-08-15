@@ -4,8 +4,27 @@
   </div>
   <div class="list">
     <div class="resort-list">
-      <div *ngFor="let resort of resortList | async" class="resort-element">
-        <resort-item [resort]=resort></resort-item>
+      <div class="resort-header">
+        <div class="name">
+          Name
+        </div>
+        <div class="trails">
+          Trails
+        </div>
+        <div class="lifts">
+          Lifts
+        </div>
+        <div class="terrain">
+          Terrain
+        </div>
+        <div class="vertical">
+          Vertical Drop
+        </div>
+      </div>
+      <div class="resorts">
+        <div *ngFor="let resort of resortList | async" class="resort-element">
+          <resort-item [resort]=resort></resort-item>
+        </div>
       </div>
     </div>
   </div>

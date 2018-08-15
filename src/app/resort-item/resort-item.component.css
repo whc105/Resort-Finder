@@ -15,7 +15,11 @@
 }
 
 #name {
-    flex: 3 3 0%;
+    flex: 4 4 0%;
+}
+
+#trails {
+    flex: 1 1 0%;
 }
 
 #lift {
@@ -23,6 +27,10 @@
 }
 
 #terrain {
+    flex: 1 1 0%;
+}
+
+#vertical {
     flex: 1 1 0%;
 }
 

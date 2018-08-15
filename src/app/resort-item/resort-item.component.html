@@ -7,21 +7,17 @@
       Location: {{resort.location}}
     </div>
   </div>
+  <div id="trails">
+    {{resort.total_runs}}
+  </div>
   <div id="lift">
-    <div>
-      Trails: {{resort.total_runs}}
-    </div>
-    <div>
-      Lifts: {{resort.total_lifts}}
-    </div>
+    {{resort.total_lifts}}
   </div>
   <div id="terrain">
-    <div>
-      Terrain: {{resort.skiable_terrain}}
-    </div>
-    <div>
-      Vertical: {{resort.vertical_drop}}
-    </div>
+    {{resort.skiable_terrain}}
+  </div>
+  <div id="vertical">
+    {{resort.vertical_drop}}
   </div>
   <div id="select-resort-button" (click)="navigateToResort()">
     <span class="k-icon k-i-arrow-chevron-right arrow"></span>
