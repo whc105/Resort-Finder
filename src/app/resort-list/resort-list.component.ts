@@ -54,11 +54,17 @@ export class ResortListComponent implements OnInit {
       if (filters.night && typeof resort.night_skiing !== 'number') {
         return false;
       }
-      
+
       //Filters resorts that are open
       if (filters.open && moment().isBetween(moment(`${resort.season_close}/${year}`, "MM/D/YYYY"), moment(`${resort.season_open}/${year}`, "MM/D/YYYY"))) {
         return false;
       }
+
+      //Filters resort by the inputted search value
+      if (filters.searchValue && !resort.resort_name.toLowerCase().includes(filters.searchValue.toLowerCase())) {
+        return false;
+      }
+
       return true;
     })
 
@@ -68,12 +74,6 @@ export class ResortListComponent implements OnInit {
       return resort.total_runs >= filters.trails && resort.skiable_terrain >= filters.terrain && resort.vertical_drop >= filters.vertical;
     });
 
-    //Filters resort by the inputted search value
-    if (filters.searchValue) {
-      this.displayedResortList = this.displayedResortList.filter((resort) => {
-        return resort.resort_name.toLowerCase().includes(filters.searchValue.toLowerCase());
-      })
-    }
   }
 
 }

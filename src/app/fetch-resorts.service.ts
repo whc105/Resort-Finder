@@ -16,12 +16,12 @@ export class FetchResortsService {
     if (region === "All") {
       return this.fetchResorts().then((result) => {
         this.resorts.next(result);
-        return this.resorts
+        return this.resorts;
       });
     } else {
       return this.fetchResortsByRegion(region).then((result) => {
         this.resorts.next(result);
-        return this.resorts
+        return this.resorts;
       });
     }
   }
@@ -62,9 +62,9 @@ export class FetchResortsService {
   //Takes an ID number to find the latest available trailmap
   fetchTrailMap(ID) {
     return fetch(`/api/getResortTrailMap/${ID}`).then((response) => {
-      return response.json()
+      return response.json();
     }).then((resortMap) => {
-      return resortMap
+      return resortMap;
     })
   }
 

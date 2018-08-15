@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class FetchLocationsService {
   
   public locations: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  public locations$: Observable<any[]> = this.locations.asObservable();
 
   constructor() { }
 
@@ -18,7 +19,7 @@ export class FetchLocationsService {
         });
       }
       this.locations.next(locations);
-      return this.locations;
+      //return this.locations;
     })
   }
 
