@@ -34,7 +34,6 @@ export class FetchResortsService {
     return fetch(`/api/getResorts/${region}`).then((response) => {
       return response.json();
     }).then((resorts) => {
-      console.log(resorts)
       this.resorts.next(resorts);
     });
   }

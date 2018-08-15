@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
 import { Resort } from '../../resources/models';
 import { ActivatedRoute } from '@angular/router';
-import { map, startWith } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import * as moment from "moment";
 import { BehaviorSubject, Subscription, combineLatest } from 'rxjs';
 
