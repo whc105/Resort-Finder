@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
   regionSelector(regions) {
     this.filterInputs.patchValue({
       regions: regions
-    })
+    });
     this.filters.emit(this.filterInputs.value);
   }
 

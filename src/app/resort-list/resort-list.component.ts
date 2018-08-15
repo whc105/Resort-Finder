@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FetchResortsService } from '../fetch-resorts.service';
 import { Resort } from '../../resources/models';
 import { ActivatedRoute } from '@angular/router';
+import { map, startWith } from 'rxjs/operators';
 import * as moment from "moment";
+import { BehaviorSubject, Subscription, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'resort-list',
@@ -12,9 +14,10 @@ import * as moment from "moment";
 
 export class ResortListComponent implements OnInit {
 
-  public resortList: Resort[] = [];
-  public displayedResortList: Resort[] = [];
-  public selectedLocationList: string[] = [];
+  public resortList: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
+  public filters: BehaviorSubject<{}> = new BehaviorSubject({});
+
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private fetchResortsService: FetchResortsService,
@@ -27,29 +30,43 @@ export class ResortListComponent implements OnInit {
     this.getResortList(region);
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    });
+  }
+
   getResortList(region) {
-    return this.fetchResortsService
-      .getResorts(region)
-      .then(resorts => {
-        this.displayedResortList = resorts.value;
-        this.resortList = resorts.value;
-      });
+    this.fetchResortsService.getResorts(region).then(() => {
+      this.subscriptions.push(
+        combineLatest(this.fetchResortsService.resorts$, this.filters)
+          .pipe(map(([resorts, filters]) => {
+            return this.filterLocation(resorts, filters)
+          }))
+          .subscribe((resorts) => {
+            this.resortList.next(resorts);
+          }),
+        this.fetchResortsService.resorts$.subscribe((resorts) => {
+          this.resortList.next(resorts);
+        })
+      );
+    })
   };
 
-  filterLocationList(filters) {
-    //Makes a shallow copy
-    this.displayedResortList = this.resortList.slice();
+  saveFilters(filters) {
+    this.filters.next(filters);
+  }
 
+  filterLocation(resorts, filters) {
     //Filters locations by region
-    if (filters.regions.length !== 0) {
-      this.selectedLocationList = filters.regions;
-      this.displayedResortList = this.displayedResortList.filter((resort) => {
-        return this.selectedLocationList.includes(resort.location);
+    if (filters.regions && filters.regions.length !== 0) {
+      resorts = resorts.filter((resort) => {
+        return filters.regions.includes(resort.location);
       });
     }
 
     const year = new Date().getFullYear();
-    this.displayedResortList = this.displayedResortList.filter((resort) => {
+    resorts = resorts.filter((resort) => {
       //Filters resorts with night skiing
       if (filters.night && typeof resort.night_skiing !== 'number') {
         return false;
@@ -70,10 +87,11 @@ export class ResortListComponent implements OnInit {
 
     //Filters Terrain
     //The resort must have greater than or equal to the inputted Trails, Terrain, and Vertical
-    this.displayedResortList = this.displayedResortList.filter((resort) => {
+    resorts = resorts.filter((resort) => {
       return resort.total_runs >= filters.trails && resort.skiable_terrain >= filters.terrain && resort.vertical_drop >= filters.vertical;
     });
 
+    return resorts;
   }
 
 }

@@ -1,10 +1,10 @@
 <div class="main">
   <div class="sidebar">
-    <sidebar (filters)="filterLocationList($event)"></sidebar>
+    <sidebar (filters)="saveFilters($event)"></sidebar>
   </div>
   <div class="list">
     <div class="resort-list">
-      <div *ngFor="let resort of displayedResortList" class="resort-element">
+      <div *ngFor="let resort of resortList | async" class="resort-element">
         <resort-item [resort]=resort></resort-item>
       </div>
     </div>

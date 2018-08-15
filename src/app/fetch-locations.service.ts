@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class FetchLocationsService {
   
-  public locations: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  private locations: BehaviorSubject<any[]> = new BehaviorSubject([]);
   public locations$: Observable<any[]> = this.locations.asObservable();
 
   constructor() { }
@@ -19,7 +19,6 @@ export class FetchLocationsService {
         });
       }
       this.locations.next(locations);
-      //return this.locations;
     })
   }
 

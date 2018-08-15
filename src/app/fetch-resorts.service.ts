@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Resort } from '../resources/models';
 
 @Injectable({
@@ -8,21 +8,16 @@ import { Resort } from '../resources/models';
 
 export class FetchResortsService {
 
-  public resorts: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
+  private resorts: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
+  public resorts$: Observable<Resort[]> = this.resorts.asObservable();
 
   constructor() { }
 
   getResorts(region) {
     if (region === "All") {
-      return this.fetchResorts().then((result) => {
-        this.resorts.next(result);
-        return this.resorts;
-      });
+      return this.fetchResorts();
     } else {
-      return this.fetchResortsByRegion(region).then((result) => {
-        this.resorts.next(result);
-        return this.resorts;
-      });
+      return this.fetchResortsByRegion(region);
     }
   }
 
@@ -30,7 +25,7 @@ export class FetchResortsService {
     return fetch('/api/getAllResorts').then((response) => {
       return response.json();
     }).then((resorts) => {
-      return resorts;
+      this.resorts.next(resorts);
     })
   }
 
@@ -39,9 +34,12 @@ export class FetchResortsService {
     return fetch(`/api/getResorts/${region}`).then((response) => {
       return response.json();
     }).then((resorts) => {
-      return resorts;
+      console.log(resorts)
+      this.resorts.next(resorts);
     });
   }
+
+  //For individual resort page
 
   fetchResort(name) {
     return fetch(`/api/getResort/${name}`).then((response) => {
