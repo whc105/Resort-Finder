@@ -37,30 +37,31 @@
       <div class="area col-md-4">
         <div class="subtitle">
           Area
+          <span class="k-icon k-i-arrows-dimensions"></span>
         </div>
         {{resort.skiable_terrain}} Acres
       </div>
-      <div class="park col-md-4" *ngIf="resort.terrain_parks">
+      <div class="park col-md-4">
         <div class="subtitle">
           Terrain Parks
         </div>
-        {{resort.terrain_parks}}
+        {{resort.terrain_parks ? resort.terrain_parks : "N/A"}}
       </div>
     </div>
     <div class="row">
-      <div class="price col-md-4" *ngIf="resort.lift_tickets">
+      <div class="price col-md-4">
         <div class="subtitle">
           Lift Ticket
           <i class="fas fa-dollar-sign"></i>
         </div>
-        ${{resort.lift_tickets}}
-        <div *ngIf="ticketPriceCostBasis > 0">
+        {{resort.lift_tickets ? '$' + resort.lift_tickets : "N/A"}}
+        <div *ngIf="resort.lift_tickets && ticketPriceCostBasis > 0">
           ${{ticketPriceCostBasis}} more than average
         </div>
-        <div *ngIf="ticketPriceCostBasis < 0">
+        <div *ngIf="resort.lift_tickets && ticketPriceCostBasis < 0">
           ${{ticketPriceCostBasis*-1}} less than average
         </div>
-        <div *ngIf="ticketPriceCostBasis == 0">
+        <div *ngIf="resort.lift_tickets && ticketPriceCostBasis == 0">
           Average Lift Ticket Price
         </div>
       </div>
@@ -71,12 +72,12 @@
         </div>
         {{resort.avg_snowfall}} Inches
       </div>
-      <div class="night col-md-4" *ngIf="resort.night_skiing">
+      <div class="night col-md-4">
         <div class="subtitle">
           Night Skiing
           <i class="far fa-moon"></i>
         </div>
-        {{resort.night_skiing}} Acres
+        {{resort.night_skiing ? resort.night_skiing + 'Acres' : "N/A"}}
       </div>
     </div>
   </div>

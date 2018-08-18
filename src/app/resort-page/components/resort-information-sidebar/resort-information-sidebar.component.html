@@ -58,11 +58,17 @@
         </h6>
         <div *ngIf="resortMap">
           <h6>
-            <a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map</a>
+            <a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map
+              <i class="far fa-map"></i>
+            </a>
           </h6>
-          <img id="trail-map" [src]="resortMap[0].$.url" *ngIf="!opened" (click)="openTrailMap()">
-          <kendo-dialog *ngIf="openedMap" (close)="closeTrailMap()">
-            <h5 id="trail-map-title">Trail Map</h5>
+          <img id="trail-map" [src]="resortMap[0].$.url" *ngIf="!opened" (click)="toggleTrailMap()">
+          <kendo-dialog *ngIf="openedMap" (close)="toggleTrailMap()">
+            <kendo-dialog-titlebar class="dialog-title-bar">
+              <h5 id="dialog-title">
+                Trail Map
+              </h5>
+            </kendo-dialog-titlebar>
             <img id="trail-map-large" [src]="resortMap[0].$.url">
           </kendo-dialog>
         </div>

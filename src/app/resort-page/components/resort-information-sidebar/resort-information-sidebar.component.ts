@@ -19,12 +19,8 @@ export class ResortInformationSidebarComponent implements OnInit {
 
   ngOnInit() {}
 
-  closeTrailMap() {
-    this.openedMap = false;
-  }
-
-  openTrailMap() {
-    this.openedMap = true;
+  toggleTrailMap() {
+    this.openedMap = !this.openedMap;
   }
 
 }

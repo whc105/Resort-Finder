@@ -15,6 +15,8 @@ module.exports = app => {
         }).asPromise()
             .then((response) => {
                 res.send(response.json.rows);
+            }).catch((err) => {
+                res.send(err);
             });
     });
 
@@ -28,7 +30,9 @@ module.exports = app => {
             .then((response) => {
                 const nearbyRestaurants = response.json.results.splice(0, 5);
                 res.send(nearbyRestaurants);
-            })
+            }).catch((err) => {
+                res.send(err);
+            });
     })
 
     //Gets 10 nearby hotels
@@ -54,8 +58,12 @@ module.exports = app => {
                         return fieldedHotel;
                     });
                     res.send(nearbyHotels);
-                })
-        })
+                }).catch((err) => {
+                    res.send(err);
+                });
+        }).catch((err) => {
+            res.send(err);
+        });
     });
 
     //Gets the closest town or city
@@ -69,6 +77,8 @@ module.exports = app => {
                 }
             });
             res.send(locality);
+        }).catch((err) => {
+            res.send(err);
         });
     })
 }
