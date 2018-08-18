@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchResortsService } from '../fetch-resorts.service';
-import { Resort } from '../../resources/models';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import * as moment from "moment";
 import { BehaviorSubject, Subscription, combineLatest } from 'rxjs';
+import { FetchResortsService } from '../fetch-resorts.service';
+import { Resort } from '../../resources/models';
 
 @Component({
   selector: 'resort-list',
@@ -22,13 +22,17 @@ export class ResortListComponent implements OnInit {
 
   constructor(
     private fetchResortsService: FetchResortsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {
   }
 
   ngOnInit() {
-    const region = this.activatedRoute.snapshot.params.region;
-    this.getResortList(region);
+    this.subscriptions.push(
+      this.activatedRoute.url.subscribe((params) => {
+        //Gets the region from the params
+        this.getResortList(params[1].path)
+      })
+    )
   }
 
   ngOnDestroy() {

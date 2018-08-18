@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+import { regions } from './../../resources/predefined-data';
 
 @Component({
   selector: 'nav-bar',
@@ -8,15 +11,23 @@ import { Location } from '@angular/common';
 })
 export class NavBarComponent implements OnInit {
 
+  public regionsList: string[] = [];
+  public toShow: boolean = true;
+
   constructor(
-    private location: Location
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.regionsList = regions.map((region) => {
+      return region.region;
+    });
+    this.regionsList.push("All");
   }
 
-  back() {
-    this.location.back();
+  redirectToRegion(region) {
+    if (region !== "Select A Region") {
+      this.router.navigate([`/resorts/${region}`]);
+    }
   }
-
 }

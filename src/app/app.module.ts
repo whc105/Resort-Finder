@@ -23,6 +23,8 @@ import { ResortInformationSidebarComponent } from './resort-page/components/reso
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
+import { ToolBarModule } from '@progress/kendo-angular-toolbar';
+
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -60,6 +62,7 @@ const appRoutes: Routes = [
     DialogsModule,
     InputsModule,
     ButtonsModule,
+    ToolBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
