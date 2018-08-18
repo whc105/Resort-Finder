@@ -34,3 +34,10 @@
     height: calc(100vh - 56px - 40px);
     overflow: auto;
 }
+
+.not-found {
+    text-align: center;
+    padding: 15px 0px;
+    font-weight: 300;
+    font-size: 25px;
+}
