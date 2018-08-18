@@ -6,8 +6,9 @@
 
 #select-resort-button {
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     display: flex;
+    flex: .5 .5 0%;
 }
 
 #select-resort-button:hover {
@@ -15,7 +16,7 @@
 }
 
 #name {
-    flex: 4 4 0%;
+    flex: 5 5 0%;
 }
 
 #trails {

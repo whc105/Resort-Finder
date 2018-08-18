@@ -16,6 +16,7 @@ export class ResortListComponent implements OnInit {
 
   public resortList: BehaviorSubject<Resort[]> = new BehaviorSubject([]);
   public filters: BehaviorSubject<{}> = new BehaviorSubject({});
+  public sorts: BehaviorSubject<{}> = new BehaviorSubject({});
 
   private subscriptions: Subscription[] = [];
 
@@ -39,16 +40,21 @@ export class ResortListComponent implements OnInit {
   getResortList(region) {
     this.fetchResortsService.getResorts(region).then(() => {
       this.subscriptions.push(
-        combineLatest(this.fetchResortsService.resorts$, this.filters)
-          .pipe(map(([resorts, filters]) => {
-            return this.filterLocation(resorts, filters)
+        combineLatest(this.fetchResortsService.resorts$, this.filters, this.sorts)
+          .pipe(map(([resorts, filters, sorts]) => {
+            //If filter is not applied at all, sorts can still function
+            if (Object.keys(filters).length > 1) {
+              let filteredResorts = this.filterResorts(resorts, filters);
+              filteredResorts = this.sortResorts(filteredResorts, sorts);
+              return filteredResorts;
+            } else {
+              resorts = this.sortResorts(resorts, sorts);
+              return resorts;
+            }
           }))
           .subscribe((resorts) => {
             this.resortList.next(resorts);
           }),
-        this.fetchResortsService.resorts$.subscribe((resorts) => {
-          this.resortList.next(resorts);
-        })
       );
     })
   };
@@ -57,7 +63,11 @@ export class ResortListComponent implements OnInit {
     this.filters.next(filters);
   }
 
-  filterLocation(resorts, filters) {
+  saveSortProps(sortProps) {
+    this.sorts.next(sortProps);
+  }
+
+  filterResorts(resorts, filters) {
     //Filters locations by region
     if (filters.regions && filters.regions.length !== 0) {
       resorts = resorts.filter((resort) => {
@@ -92,6 +102,16 @@ export class ResortListComponent implements OnInit {
     });
 
     return resorts;
+  }
+
+  sortResorts(resort, sorts) {
+    return resort.sort((a, b) => {
+      if (sorts.direction) {
+        return b[sorts.property] - a[sorts.property];
+      } else {
+        return a[sorts.property] - b[sorts.property];
+      }
+    });
   }
 
 }

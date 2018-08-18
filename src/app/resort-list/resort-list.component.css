@@ -1,6 +1,4 @@
 .main {
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
     flex-direction: row;
 }
@@ -9,31 +7,6 @@
     padding-left: 10px;
     border-bottom: 1px solid #e5e5e5;
     border-left: 3px solid transparent;
-}
-
-.resort-header {
-    padding: 12px 0px;
-    padding-left: 10px;
-    padding-right: 52px;
-    background-color: #ced4da;
-    border-bottom: 1px solid #babec2;
-    border-left: 3px solid transparent;
-    display: flex;
-    flex-direction: row;
-    height: 40px;
-}
-
-.resort-header > div {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.name {
-    flex: 4 4 0%;
-}
-
-.trails, .lifts, .terrain, .vertical {
-    flex: 1 1 0%;
 }
 
 .resort-element:hover {

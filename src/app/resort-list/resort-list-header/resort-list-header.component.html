@@ -1,0 +1,21 @@
+<div class="resort-header">
+  <div class="name">
+    Name
+  </div>
+  <div class="trails" (click)="sortProperty('total_runs')">
+    Trails
+    <span *ngIf="sort.property === 'total_runs'" class="k-icon" [ngClass]="sort.direction ? 'k-i-arrow-chevron-down' : 'k-i-arrow-chevron-up'"></span>
+  </div>
+  <div class="lifts" (click)="sortProperty('total_lifts')">
+    Lifts
+    <span *ngIf="sort.property === 'total_lifts'" class="k-icon" [ngClass]="sort.direction ? 'k-i-arrow-chevron-down' : 'k-i-arrow-chevron-up'"></span>
+  </div>
+  <div class="terrain" (click)="sortProperty('skiable_terrain')">
+    Terrain
+    <span *ngIf="sort.property === 'skiable_terrain'" class="k-icon" [ngClass]="sort.direction ? 'k-i-arrow-chevron-down' : 'k-i-arrow-chevron-up'"></span>
+  </div>
+  <div class="vertical" (click)="sortProperty('vertical_drop')">
+    Vertical Drop
+    <span *ngIf="sort.property === 'vertical_drop'" class="k-icon" [ngClass]="sort.direction ? 'k-i-arrow-chevron-down' : 'k-i-arrow-chevron-up'"></span>
+  </div>
+</div>

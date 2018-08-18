@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { ResortInformationSidebarComponent } from './resort-page/components/resort-information-sidebar/resort-information-sidebar.component';
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     HomeComponent,
     ResortInformationSidebarComponent,
     ResortContentComponent,
+    ResortListHeaderComponent,
   ],
   imports: [
     BrowserModule,
