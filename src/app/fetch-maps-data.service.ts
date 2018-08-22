@@ -15,8 +15,8 @@ export class FetchMapsDataService {
 
   constructor() { }
 
-  getDistance(location) {
-    return fetch(`/api/getDistance/${location}`, this.init).then((response) => {
+  getDistance(startingLocation, location) {
+    return fetch(`/api/getDistance/${location}/${startingLocation || undefined}`, this.init).then((response) => {
       return response.json();
     }).then((distance) => {
       return distance;

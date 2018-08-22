@@ -6,9 +6,10 @@ module.exports = app => {
         Promise: Promise
     });
 
-    app.get('/api/getDistance/:location', (req, res) => {
+    app.get('/api/getDistance/:location/:startingLocation', (req, res) => {
+        const origin = (req.params.startingLocation !== "undefined") ? req.params.startingLocation : "New York City";
         client.distanceMatrix({
-            origins: "New York City",
+            origins: origin,
             destinations: req.params.location,
             mode: "driving",
             units: "imperial"

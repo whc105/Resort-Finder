@@ -4,14 +4,13 @@
     text-align: center;
 }
 
-.usa {
+.regions {
     display: flex;
     justify-content: space-between;
     margin: 25px;
 }
 
-.abroad {
-    display: flex;
-    justify-content: space-between;
+.starting {
     margin: 25px;
+    display: flex;
 }

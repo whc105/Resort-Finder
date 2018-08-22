@@ -91,7 +91,7 @@
           Distance
           <i class="fas fa-road"></i>
         </div>
-        {{distanceData.distance.text}} from {{startingLocation}}
+        {{distanceData.distance.text}} from {{((startingLocation | async) || "New York City") | titlecase}}
       </div>
       <div class="duration">
         <div class="subtitle">

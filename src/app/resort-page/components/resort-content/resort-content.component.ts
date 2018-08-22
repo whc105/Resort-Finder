@@ -5,6 +5,8 @@ import { FetchMapsDataService } from '../../../fetch-maps-data.service';
 
 import { Resort, Locality } from '../../../../resources/models';
 import googleAPIKey from '../../../../resources/key';
+import { BehaviorSubject } from 'rxjs';
+import { UserPropsService } from '../../../user-props.service';
 
 
 @Component({
@@ -15,9 +17,10 @@ import googleAPIKey from '../../../../resources/key';
 export class ResortContentComponent implements OnInit {
 
   @Input() resort: Resort;
+
   public restaurantCollapse: boolean = false;
   public hotelCollapse: boolean = false;
-  public startingLocation: string = "New York City"
+  public startingLocation: BehaviorSubject<string> = new BehaviorSubject("");
   public ticketPriceCostBasis: number;
   public mapContent: any;
   public distanceData: any;
@@ -29,13 +32,18 @@ export class ResortContentComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private fetchMapsDataService: FetchMapsDataService,
+    private userPropsService: UserPropsService
   ) { }
 
   ngOnInit() {
+    this.userPropsService.startingLocation$.subscribe((startingLocation) => {
+      this.startingLocation.next(startingLocation);
+    })
+
     this.ticketPriceCostBasis = this.resort.lift_tickets - 55;
     this.mapContent = this.sanitizeURL(`https://www.google.com/maps/embed/v1/place?q=${this.resort.resort_name}&key=${googleAPIKey}`);
 
-    this.fetchMapsDataService.getDistance(this.resort.resort_name).then((distance) => {
+    this.fetchMapsDataService.getDistance(this.startingLocation.value, this.resort.resort_name).then((distance) => {
       this.distanceData = distance[0].elements[0];
     });
 
@@ -55,4 +63,6 @@ export class ResortContentComponent implements OnInit {
   sanitizeURL(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+
+
 }
