@@ -14,3 +14,8 @@ The highest amount of trails is 347 (Park City, Utah)<br/>
 The smallest skiable terrain is 9 Acres<br/>
 The biggest skiable terrain is 24710 Acres<br/>
 The highest vertical drop is 7477 ft (Zermatt, Switzerland)<br/>
+
+
+Will Implement One of the Following
+https://api.darksky.net/forecast
+opensnow
