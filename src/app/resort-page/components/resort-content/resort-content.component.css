@@ -73,3 +73,15 @@
     margin-left: 0px;
     margin-right: 0px;
 }
+
+.restaurant-name {
+    cursor: pointer;
+}
+
+.fa-yelp {
+    color: #d32323;
+}
+
+#yelp-navigate {
+    cursor: pointer;
+}

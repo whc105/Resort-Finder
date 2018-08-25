@@ -110,30 +110,21 @@
       <div class="restaurants">
         <div class="subtitle">
           Nearby Restaurants
-          <i class="fas fa-utensils restaurants-icon"></i>
           <button type="button" class="btn btn-outline-secondary btn-sm" (click)="restaurantCollapse = !restaurantCollapse" [attr.aria-expanded]="!restaurantCollapse"
             aria-controls="restaurant-collapse">
             {{restaurantCollapse ? "Hide" : "Show"}}
           </button>
         </div>
         <div id="restaurant-collapse" [ngbCollapse]="!restaurantCollapse">
+          <span id="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
+            <i class="fab fa-yelp"></i> Yelp Listings
+          </span>
           <div *ngFor="let restaurant of nearbyRestaurants">
             <div class="restaurant-data">
-              <div class="restaurant-name" [ngbTooltip]="restaurant.location.address1">
+              <div class="restaurant-name" [ngbTooltip]="restaurant.location.display_address.toString()" (click)="navigateToYelp(restaurant.url)">
                 {{restaurant.name}} {{restaurant.price}}
               </div>
-              <div>
-                <ng-template #star let-fill="fill">
-                  <span class="star" [class.full]="fill === 100">
-                    <span class="half" [style.width.%]="fill">
-                      <i class="far fa-star"></i>
-                    </span>
-                    <i class="far fa-star"></i>
-                  </span>
-                </ng-template>
-                <ngb-rating [(rate)]="restaurant.rating" [starTemplate]="star" [readonly]="true" max="5"></ngb-rating>
-              </div>
-            </div>
+              <img src="../../../../assets/yelp/regular_{{restaurant.rating}}.png" ngbTooltip="{{restaurant.review_count}} Reviews">
           </div>
         </div>
       </div>

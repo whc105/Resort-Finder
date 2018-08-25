@@ -75,4 +75,8 @@ export class ResortContentComponent implements OnInit {
       sub.unsubscribe();
     })
   }
+
+  navigateToYelp(url) {
+    window.open(url);
+  }
 }
