@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { FetchMapsDataService } from '../../../fetch-maps-data.service';
-import { FetchYelpDataService} from '../../../fetch-yelp-data.service';
 
 import { Resort, Locality } from '../../../../resources/models';
 import googleAPIKey from '../../../../resources/key';
@@ -21,21 +20,16 @@ export class ResortContentComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
 
-  public restaurantCollapse: boolean = false;
-  public hotelCollapse: boolean = false;
   public startingLocation: BehaviorSubject<string> = new BehaviorSubject("");
   public ticketPriceCostBasis: number;
   public mapContent: any;
   public distanceData: any;
-  public nearbyRestaurants: any[] = [];
-  public nearbyHotels: any[] = [];
   public resortLink: any;
   public locality: Locality;
 
   constructor(
     private sanitizer: DomSanitizer,
     private fetchMapsDataService: FetchMapsDataService,
-    private fetchYelpDataService: FetchYelpDataService,
     private userPropsService: UserPropsService
   ) { }
 
@@ -67,4 +61,5 @@ export class ResortContentComponent implements OnInit {
       sub.unsubscribe();
     });
   }
+  
 }
