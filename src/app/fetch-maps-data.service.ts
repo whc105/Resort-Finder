@@ -20,15 +20,7 @@ export class FetchMapsDataService {
       return response.json();
     }).then((distance) => {
       return distance;
-    })
-  }
-
-  getHotels(location) {
-    return fetch(`/api/getNearbyHotels/${location}`, this.init).then((response) => {
-      return response.json();
-    }).then((hotels) => {
-      return hotels;
-    })
+    });
   }
 
   getNearbyCity(location) {
@@ -36,6 +28,6 @@ export class FetchMapsDataService {
       return response.json();
     }).then((locality) => {
       return locality;
-    })
+    });
   }
 }

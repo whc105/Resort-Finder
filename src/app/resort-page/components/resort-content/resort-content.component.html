@@ -116,7 +116,7 @@
           </button>
         </div>
         <div id="restaurant-collapse" [ngbCollapse]="!restaurantCollapse">
-          <span id="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
+          <span class="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
             <i class="fab fa-yelp"></i> Yelp Listings
           </span>
           <div *ngFor="let restaurant of nearbyRestaurants">
@@ -125,36 +125,28 @@
                 {{restaurant.name}} {{restaurant.price}}
               </div>
               <img src="../../../../assets/yelp/regular_{{restaurant.rating}}.png" ngbTooltip="{{restaurant.review_count}} Reviews">
+            </div>
           </div>
         </div>
       </div>
       <div class="hotels">
         <div class="subtitle">
           Nearby Hotels
-          <i class="fas fa-hotel hotel-icon"></i>
           <button type="button" class="btn btn-outline-secondary btn-sm" (click)="hotelCollapse = !hotelCollapse" [attr.aria-expanded]="!hotelCollapse"
             aria-controls="hotel-collapse">
             {{hotelCollapse ? "Hide" : "Show"}}
           </button>
         </div>
         <div id="hotel-collapse" [ngbCollapse]="!hotelCollapse">
+          <span class="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
+            <i class="fab fa-yelp"></i> Yelp Listings
+          </span>
           <div *ngFor="let hotel of nearbyHotels">
             <div class="hotel-data">
-              <div class="hotel-name" [ngbTooltip]="hotel.vicinity">
-                {{hotel.name}}
+              <div class="hotel-name" [ngbTooltip]="hotel.location.display_address.toString()" (click)="navigateToYelp(hotel.url)">
+                {{hotel.name}} {{hotel.price}}
               </div>
-              <div>
-                <ng-template #star let-fill="fill">
-                  <span class="star" [class.full]="fill === 100">
-                    <span class="half" [style.width.%]="fill">
-                      <i class="far fa-star"></i>
-                    </span>
-                    <i class="far fa-star"></i>
-                  </span>
-                </ng-template>
-                <ngb-rating [(rate)]="hotel.rating" [starTemplate]="star" [readonly]="true" max="5"></ngb-rating>
-              </div>
-            </div>
+              <img src="../../../../assets/yelp/regular_{{hotel.rating}}.png" ngbTooltip="{{hotel.review_count}} Reviews">
           </div>
         </div>
       </div>

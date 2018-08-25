@@ -37,36 +37,10 @@
     padding-bottom: 5px;
 }
 
-.restaurant-data {
+.restaurant-data, .hotel-data {
     border-top: 1px solid #e7e7e7;
     padding-top: 3px;
     padding-bottom: 3px;
-}
-
-.star {
-    position: relative;
-    display: inline-block;
-    font-size: 1rem;
-    color: #d3d3d3;
-}
-
-.full {
-    color: rgb(0, 122, 204);
-}
-
-.half {
-    position: absolute;
-    display: inline-block;
-    overflow: hidden;
-    color: rgb(0, 122, 204);
-}
-
-.restaurants-icon {
-    padding-right: 5px;
-}
-
-.hotel-icon {
-    padding-right: 5px;
 }
 
 .map-container {
@@ -74,7 +48,7 @@
     margin-right: 0px;
 }
 
-.restaurant-name {
+.restaurant-name, .hotel-name {
     cursor: pointer;
 }
 
@@ -82,6 +56,6 @@
     color: #d32323;
 }
 
-#yelp-navigate {
+.yelp-navigate {
     cursor: pointer;
 }

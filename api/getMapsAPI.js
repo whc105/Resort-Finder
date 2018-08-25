@@ -21,37 +21,6 @@ module.exports = app => {
             });
     });
 
-    //Gets 10 nearby hotels
-    //Locality is derived here
-    app.get('/api/getNearbyHotels/:location', (req, res) => {
-        client.geocode({
-            address: req.params.location
-        }).asPromise().then((response) => {
-            const location = [response.json.results[0].geometry.location.lat, response.json.results[0].geometry.location.lng]
-            client.placesNearby({
-                location: location,
-                keyword: "hotel",
-                rankby: "distance",
-                type: "establishment"
-            }).asPromise()
-                .then((hotelResponse) => {
-                    const nearbyHotels = hotelResponse.json.results.splice(0, 10).map((hotel) => {
-                        const fieldedHotel = {
-                            name: hotel.name,
-                            rating: hotel.rating,
-                            vicinity: hotel.vicinity
-                        }
-                        return fieldedHotel;
-                    });
-                    res.send(nearbyHotels);
-                }).catch((err) => {
-                    res.send(err);
-                });
-        }).catch((err) => {
-            res.send(err);
-        });
-    });
-
     //Gets the closest town or city
     app.get('/api/getNearbyCity/:location', (req, res) => {
         client.geocode({
@@ -67,5 +36,5 @@ module.exports = app => {
         }).catch((err) => {
             res.send(err);
         });
-    })
+    });
 }

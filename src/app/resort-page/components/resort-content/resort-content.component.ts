@@ -57,7 +57,7 @@ export class ResortContentComponent implements OnInit {
       this.nearbyRestaurants = nearbyRestaurants;
     })
 
-    this.fetchMapsDataService.getHotels(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyHotels) => {
+    this.fetchYelpDataService.getHotels(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyHotels) => {
       this.nearbyHotels = nearbyHotels
     });
 

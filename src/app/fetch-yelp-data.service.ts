@@ -22,4 +22,12 @@ export class FetchYelpDataService {
       return nearbyRestaurants;
     });
   }
+
+  getHotels(location) {
+    return fetch(`/api/yelp/getNearbyHotels/${location}`, this.init).then((response) => {
+      return response.json();
+    }).then((nearbyHotels) => {
+      return nearbyHotels;
+    });
+  }
 }
