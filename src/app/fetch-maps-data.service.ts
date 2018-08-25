@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
+// Google Maps API
 @Injectable({
   providedIn: 'root'
 })
-
 export class FetchMapsDataService {
 
   private init = {
@@ -20,14 +20,6 @@ export class FetchMapsDataService {
       return response.json();
     }).then((distance) => {
       return distance;
-    })
-  }
-
-  getRestaurants(location) {
-    return fetch(`/api/getNearbyRestaurants/${location}`, this.init).then((response) => {
-      return response.json();
-    }).then((nearbyRestaurants) => {
-      return nearbyRestaurants;
     })
   }
 

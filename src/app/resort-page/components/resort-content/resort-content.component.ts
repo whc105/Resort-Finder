@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { FetchMapsDataService } from '../../../fetch-maps-data.service';
+import { FetchYelpDataService} from '../../../fetch-yelp-data.service';
 
 import { Resort, Locality } from '../../../../resources/models';
 import googleAPIKey from '../../../../resources/key';
@@ -34,6 +35,7 @@ export class ResortContentComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private fetchMapsDataService: FetchMapsDataService,
+    private fetchYelpDataService: FetchYelpDataService,
     private userPropsService: UserPropsService
   ) { }
 
@@ -51,9 +53,9 @@ export class ResortContentComponent implements OnInit {
       this.distanceData = distance[0].elements[0];
     });
 
-    this.fetchMapsDataService.getRestaurants(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyRestaurants) => {
+    this.fetchYelpDataService.getRestaurants(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyRestaurants) => {
       this.nearbyRestaurants = nearbyRestaurants;
-    });
+    })
 
     this.fetchMapsDataService.getHotels(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyHotels) => {
       this.nearbyHotels = nearbyHotels

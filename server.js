@@ -10,11 +10,13 @@ const getResortsAPI = require('./api/getResorts');
 const getLocationsAPI = require('./api/getLocations');
 const getMapsAPI = require('./api/getMapsAPI');
 const getSkiMapAPI = require('./api/getSkiMap');
+const getYelpFusionAPI = require('./api/getYelpFusionAPI');
 
 getResortsAPI(app);
 getLocationsAPI(app);
 getMapsAPI(app);
 getSkiMapAPI(app);
+getYelpFusionAPI(app);
 
 require('./db');
 

@@ -21,21 +21,6 @@ module.exports = app => {
             });
     });
 
-    //Gets the 5 closest nearby restaurants
-    app.get('/api/getNearbyRestaurants/:location', (req, res) => {
-        client.places({
-            query: req.params.location,
-            radius: 13000, //Approx 8 mile radius
-            type: "restaurant"
-        }).asPromise()
-            .then((response) => {
-                const nearbyRestaurants = response.json.results.splice(0, 5);
-                res.send(nearbyRestaurants);
-            }).catch((err) => {
-                res.send(err);
-            });
-    })
-
     //Gets 10 nearby hotels
     //Locality is derived here
     app.get('/api/getNearbyHotels/:location', (req, res) => {
