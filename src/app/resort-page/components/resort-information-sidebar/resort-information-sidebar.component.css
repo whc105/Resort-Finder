@@ -19,6 +19,21 @@
     padding-top: 20px;
 }
 
+.status {
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.closed {
+    color: #ea4335;
+}
+
+.opened {
+    color: #28a745;
+}
+
+
 #trail-map {
     width: 100%;
     height: 100%;
@@ -37,4 +52,24 @@
     padding: 1rem 1rem;
     border: 0px;
     padding-bottom: 0px;
+}
+
+.green {
+    color: #28a745;
+}
+
+.blue {
+    color: #007bff;
+}
+
+.bd {
+    color: #6c757d; transform: rotate(45deg);
+}
+
+.double-bd {
+    color: #343a40; transform: rotate(45deg);
+}
+
+.double-bd:first-child {
+    margin-right: 5px;
 }

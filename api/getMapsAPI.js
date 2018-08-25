@@ -75,6 +75,8 @@ module.exports = app => {
             response.json.results[0].address_components.forEach((addressComponent) => {
                 if (addressComponent.types.includes("locality")) {
                     locality = addressComponent;
+                } else if (addressComponent.types.includes("administrative_area_level_3")) {
+                    locality = addressComponent;
                 }
             });
             res.send(locality);

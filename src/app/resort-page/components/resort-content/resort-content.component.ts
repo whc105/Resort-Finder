@@ -5,7 +5,7 @@ import { FetchMapsDataService } from '../../../fetch-maps-data.service';
 
 import { Resort, Locality } from '../../../../resources/models';
 import googleAPIKey from '../../../../resources/key';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { UserPropsService } from '../../../user-props.service';
 
 
@@ -17,6 +17,8 @@ import { UserPropsService } from '../../../user-props.service';
 export class ResortContentComponent implements OnInit {
 
   @Input() resort: Resort;
+
+  private subscriptions: Subscription[] = [];
 
   public restaurantCollapse: boolean = false;
   public hotelCollapse: boolean = false;
@@ -36,33 +38,39 @@ export class ResortContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userPropsService.startingLocation$.subscribe((startingLocation) => {
-      this.startingLocation.next(startingLocation);
-    })
+    this.subscriptions.push(
+      this.userPropsService.startingLocation$.subscribe((startingLocation) => {
+        this.startingLocation.next(startingLocation);
+      })
+    );
 
     this.ticketPriceCostBasis = this.resort.lift_tickets - 55;
-    this.mapContent = this.sanitizeURL(`https://www.google.com/maps/embed/v1/place?q=${this.resort.resort_name}&key=${googleAPIKey}`);
+    this.mapContent = this.sanitizeURL(`https://www.google.com/maps/embed/v1/place?q=${this.resort.resort_name}%20${this.resort.location}&key=${googleAPIKey}`);
 
-    this.fetchMapsDataService.getDistance(this.startingLocation.value, this.resort.resort_name).then((distance) => {
+    this.fetchMapsDataService.getDistance(this.startingLocation.value, `${this.resort.resort_name} ${this.resort.location}`).then((distance) => {
       this.distanceData = distance[0].elements[0];
     });
 
-    this.fetchMapsDataService.getRestaurants(this.resort.resort_name).then((nearbyRestaurants) => {
+    this.fetchMapsDataService.getRestaurants(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyRestaurants) => {
       this.nearbyRestaurants = nearbyRestaurants;
     });
 
-    this.fetchMapsDataService.getHotels(this.resort.resort_name).then((nearbyHotels) => {
+    this.fetchMapsDataService.getHotels(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyHotels) => {
       this.nearbyHotels = nearbyHotels
     });
 
-    this.fetchMapsDataService.getNearbyCity(this.resort.resort_name).then((locality) => {
+    this.fetchMapsDataService.getNearbyCity(`${this.resort.resort_name} ${this.resort.location}`).then((locality) => {
       this.locality = locality;
-    })
+    });
   }
 
   sanitizeURL(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-
+  ngOnDestroy() {
+    this.subscriptions.forEach((sub: Subscription) => {
+      sub.unsubscribe();
+    })
+  }
 }

@@ -77,7 +77,7 @@
           Night Skiing
           <i class="far fa-moon"></i>
         </div>
-        {{resort.night_skiing ? resort.night_skiing + 'Acres' : "N/A"}}
+        {{resort.night_skiing ? resort.night_skiing + ' Acres' : "N/A"}}
       </div>
     </div>
   </div>
@@ -85,15 +85,15 @@
     <div class="maps col-md-7">
       <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="mapContent" allowfullscreen></iframe>
     </div>
-    <div class="col-md-4 map-data" *ngIf="distanceData && distanceData.distance">
-      <div class="distance">
+    <div class="col-md-4 map-data">
+      <div class="distance" *ngIf="distanceData && distanceData.distance">
         <div class="subtitle">
           Distance
           <i class="fas fa-road"></i>
         </div>
         {{distanceData.distance.text}} from {{((startingLocation | async) || "New York City") | titlecase}}
       </div>
-      <div class="duration">
+      <div class="duration" *ngIf="distanceData && distanceData.distance">
         <div class="subtitle">
           Driving Time
           <i class="fas fa-car"></i>

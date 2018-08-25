@@ -1,4 +1,4 @@
-# SKI MTN Finder
+# Hills
 
 Resort Trail Maps are from Skimap.org
 
@@ -18,4 +18,3 @@ The highest vertical drop is 7477 ft (Zermatt, Switzerland)<br/>
 
 Will Implement One of the Following
 https://api.darksky.net/forecast
-opensnow

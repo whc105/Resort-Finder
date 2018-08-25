@@ -1,4 +1,4 @@
 <nav class="navbar navbar-dark">
-  <a routerLink="/" class="navbar-brand">Mountain Finder</a>
+  <a routerLink="/" class="navbar-brand">Hills</a>
   <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)" *ngIf="router.url !== '/'"></kendo-dropdownlist>
 </nav>
