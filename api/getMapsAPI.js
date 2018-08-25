@@ -72,11 +72,10 @@ module.exports = app => {
         client.geocode({
             address: req.params.location
         }).asPromise().then((response) => {
-            response.json.results[0].address_components.forEach((addressComponent) => {
-                if (addressComponent.types.includes("locality")) {
+            response.json.results[0].address_components.some((addressComponent) => {
+                if (addressComponent.types.includes("locality") === true || addressComponent.types.includes("administrative_area_level_3") === true) {
                     locality = addressComponent;
-                } else if (addressComponent.types.includes("administrative_area_level_3")) {
-                    locality = addressComponent;
+                    return true;
                 }
             });
             res.send(locality);
