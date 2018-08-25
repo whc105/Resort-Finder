@@ -37,25 +37,7 @@
     padding-bottom: 5px;
 }
 
-.restaurant-data, .hotel-data {
-    border-top: 1px solid #e7e7e7;
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-
 .map-container {
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.restaurant-name, .hotel-name {
-    cursor: pointer;
-}
-
-.fa-yelp {
-    color: #d32323;
-}
-
-.yelp-navigate {
-    cursor: pointer;
 }

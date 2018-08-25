@@ -107,48 +107,14 @@
         </div>
         {{locality.long_name}}
       </div>
-      <div class="restaurants">
-        <div class="subtitle">
-          Nearby Restaurants
-          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="restaurantCollapse = !restaurantCollapse" [attr.aria-expanded]="!restaurantCollapse"
-            aria-controls="restaurant-collapse">
-            {{restaurantCollapse ? "Hide" : "Show"}}
-          </button>
-        </div>
-        <div id="restaurant-collapse" [ngbCollapse]="!restaurantCollapse">
-          <span class="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
-            <i class="fab fa-yelp"></i> Yelp Listings
-          </span>
-          <div *ngFor="let restaurant of nearbyRestaurants">
-            <div class="restaurant-data">
-              <div class="restaurant-name" [ngbTooltip]="restaurant.location.display_address.toString()" (click)="navigateToYelp(restaurant.url)">
-                {{restaurant.name}} {{restaurant.price}}
-              </div>
-              <img src="../../../../assets/yelp/regular_{{restaurant.rating}}.png" ngbTooltip="{{restaurant.review_count}} Reviews">
-            </div>
-          </div>
-        </div>
+      <div>
+        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Ski Shops"></nearby-establishments>
       </div>
-      <div class="hotels">
-        <div class="subtitle">
-          Nearby Hotels
-          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="hotelCollapse = !hotelCollapse" [attr.aria-expanded]="!hotelCollapse"
-            aria-controls="hotel-collapse">
-            {{hotelCollapse ? "Hide" : "Show"}}
-          </button>
-        </div>
-        <div id="hotel-collapse" [ngbCollapse]="!hotelCollapse">
-          <span class="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
-            <i class="fab fa-yelp"></i> Yelp Listings
-          </span>
-          <div *ngFor="let hotel of nearbyHotels">
-            <div class="hotel-data">
-              <div class="hotel-name" [ngbTooltip]="hotel.location.display_address.toString()" (click)="navigateToYelp(hotel.url)">
-                {{hotel.name}} {{hotel.price}}
-              </div>
-              <img src="../../../../assets/yelp/regular_{{hotel.rating}}.png" ngbTooltip="{{hotel.review_count}} Reviews">
-          </div>
-        </div>
+      <div>
+        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Restaurants"></nearby-establishments>
+      </div>
+      <div>
+        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Hotels"></nearby-establishments>
       </div>
     </div>
   </div>

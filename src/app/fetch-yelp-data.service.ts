@@ -30,4 +30,12 @@ export class FetchYelpDataService {
       return nearbyHotels;
     });
   }
+
+  getSkiShops(location) {
+    return fetch(`/api/yelp/getNearbySkiShops/${location}`, this.init).then((response) => {
+      return response.json();
+    }).then((nearbyHotels) => {
+      return nearbyHotels;
+    });
+  }
 }

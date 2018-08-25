@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { ToolBarModule } from '@progress/kendo-angular-toolbar';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -21,9 +23,8 @@ import { ResortPageComponent } from './resort-page/resort-page.component';
 import { HomeComponent } from './home/home.component';
 import { ResortInformationSidebarComponent } from './resort-page/components/resort-information-sidebar/resort-information-sidebar.component';
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
-import { ToolBarModule } from '@progress/kendo-angular-toolbar';
+import { NearbyEstablishmentsComponent } from './resort-page/components/nearby-establishments/nearby-establishments.component';
 
 
 const appRoutes: Routes = [
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     ResortInformationSidebarComponent,
     ResortContentComponent,
     ResortListHeaderComponent,
+    NearbyEstablishmentsComponent,
   ],
   imports: [
     BrowserModule,

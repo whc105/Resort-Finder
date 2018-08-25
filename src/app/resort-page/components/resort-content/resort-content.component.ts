@@ -53,14 +53,6 @@ export class ResortContentComponent implements OnInit {
       this.distanceData = distance[0].elements[0];
     });
 
-    this.fetchYelpDataService.getRestaurants(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyRestaurants) => {
-      this.nearbyRestaurants = nearbyRestaurants;
-    })
-
-    this.fetchYelpDataService.getHotels(`${this.resort.resort_name} ${this.resort.location}`).then((nearbyHotels) => {
-      this.nearbyHotels = nearbyHotels
-    });
-
     this.fetchMapsDataService.getNearbyCity(`${this.resort.resort_name} ${this.resort.location}`).then((locality) => {
       this.locality = locality;
     });
@@ -73,10 +65,6 @@ export class ResortContentComponent implements OnInit {
   ngOnDestroy() {
     this.subscriptions.forEach((sub: Subscription) => {
       sub.unsubscribe();
-    })
-  }
-
-  navigateToYelp(url) {
-    window.open(url);
+    });
   }
 }
