@@ -81,19 +81,35 @@
       </div>
     </div>
   </div>
-  <div class="map-container row">
-    <div class="maps col-md-7">
-      <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="mapContent" allowfullscreen></iframe>
-    </div>
-    <div class="col-md-4 map-data">
+  <div class="map-container">
+    <div class="col-md-12 map-data">
+      <kendo-tabstrip>
+        <kendo-tabstrip-tab [title]="'Map'" [selected]="true">
+          <ng-template kendoTabContent>
+            <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="mapContent" allowfullscreen id="google-maps"></iframe>
+          </ng-template>
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Restaurants'" [selected]="false">
+          <ng-template kendoTabContent>
+            <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Restaurants"></nearby-establishments>
+          </ng-template>
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Hotels'" [selected]="false">
+          <ng-template kendoTabContent>
+            <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Hotels"></nearby-establishments>
+          </ng-template>
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Ski Shops'" [selected]="false">
+          <ng-template kendoTabContent>
+            <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Ski Shops"></nearby-establishments>
+          </ng-template>
+        </kendo-tabstrip-tab>
+      </kendo-tabstrip>
       <div>
-        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Ski Shops"></nearby-establishments>
       </div>
       <div>
-        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Restaurants"></nearby-establishments>
       </div>
       <div>
-        <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Hotels"></nearby-establishments>
       </div>
     </div>
   </div>

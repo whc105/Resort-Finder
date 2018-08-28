@@ -28,6 +28,8 @@ import { ResortInformationSidebarComponent } from './resort-page/components/reso
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
 import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
 import { NearbyEstablishmentsComponent } from './resort-page/components/nearby-establishments/nearby-establishments.component';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+
 
 
 const appRoutes: Routes = [
@@ -69,6 +71,7 @@ const appRoutes: Routes = [
     InputsModule,
     ButtonsModule,
     ToolBarModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

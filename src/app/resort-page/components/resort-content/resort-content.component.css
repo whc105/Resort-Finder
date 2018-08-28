@@ -40,4 +40,9 @@
 .map-container {
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 20px;
+}
+
+#google-maps {
+    height: 50vh;
 }
