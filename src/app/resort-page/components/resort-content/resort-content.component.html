@@ -4,29 +4,6 @@
   </div>
   <div class="sub-container">
     <div class="row">
-      <div class="resort-location col-md-4">
-        <div class="subtitle">
-          Location
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        {{resort.location}}
-      </div>
-      <div class="country col-md-4">
-        <div class="subtitle">
-          Region
-          <i class="fas fa-globe"></i>
-        </div>
-        {{resort.region}}
-      </div>
-      <div class="season col-md-4">
-        <div class="subtitle">
-          Season Date
-          <i class="far fa-calendar-alt"></i>
-        </div>
-        {{resort.season_open}} - {{resort.season_close}}
-      </div>
-    </div>
-    <div class="row">
       <div class="vert col-md-4">
         <div class="subtitle">
           Vertical Drop
@@ -45,7 +22,7 @@
         <div class="subtitle">
           Terrain Parks
         </div>
-        {{resort.terrain_parks ? resort.terrain_parks : "N/A"}}
+        {{resort.terrain_parks || "N/A"}}
       </div>
     </div>
     <div class="row">
@@ -70,14 +47,37 @@
           Average Snowfall
           <i class="far fa-snowflake"></i>
         </div>
-        {{resort.avg_snowfall}} Inches
+        {{resort.avg_snowfall ? resort.avg_snowfall + " Inches" : "N/A"}}
       </div>
       <div class="night col-md-4">
         <div class="subtitle">
           Night Skiing
           <i class="far fa-moon"></i>
         </div>
-        {{resort.night_skiing ? resort.night_skiing + ' Acres' : "N/A"}}
+        {{resort.night_skiing ? resort.night_skiing + " Acres" : "N/A"}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="distance col-md-4" *ngIf="distanceData && distanceData.distance">
+        <div class="subtitle">
+          Distance
+          <i class="fas fa-road"></i>
+        </div>
+        {{distanceData.distance.text}} from {{((startingLocation | async) || "New York City") | titlecase}}
+      </div>
+      <div class="duration  col-md-4" *ngIf="distanceData && distanceData.distance">
+        <div class="subtitle">
+          Driving Time
+          <i class="fas fa-car"></i>
+        </div>
+        {{distanceData.duration.text}}
+      </div>
+      <div class="nearby-town  col-md-4" *ngIf="locality">
+        <div class="subtitle">
+          Closest Town
+          <i class="far fa-building"></i>
+        </div>
+        {{locality.long_name}}
       </div>
     </div>
   </div>
@@ -86,27 +86,6 @@
       <iframe width="100%" height="100%" frameborder="0" style="border:0" [src]="mapContent" allowfullscreen></iframe>
     </div>
     <div class="col-md-4 map-data">
-      <div class="distance" *ngIf="distanceData && distanceData.distance">
-        <div class="subtitle">
-          Distance
-          <i class="fas fa-road"></i>
-        </div>
-        {{distanceData.distance.text}} from {{((startingLocation | async) || "New York City") | titlecase}}
-      </div>
-      <div class="duration" *ngIf="distanceData && distanceData.distance">
-        <div class="subtitle">
-          Driving Time
-          <i class="fas fa-car"></i>
-        </div>
-        {{distanceData.duration.text}}
-      </div>
-      <div class="nearby-town" *ngIf="locality">
-        <div class="subtitle">
-          Closest Town
-          <i class="far fa-building"></i>
-        </div>
-        {{locality.long_name}}
-      </div>
       <div>
         <nearby-establishments location="{{this.resort.resort_name}} {{this.resort.location}}" category="Ski Shops"></nearby-establishments>
       </div>

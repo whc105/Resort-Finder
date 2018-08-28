@@ -7,6 +7,18 @@
       <div class="status">
         Status: <span [ngClass]="isClosed ? 'closed' : 'opened'">{{isClosed ? "Closed" : "Open"}}</span>
       </div>
+      <div class="location">
+        <h6>Location: {{resort.location}}</h6>
+        <div (click)="redirectToList()" id="region-selector">
+          <i class="far fa-arrow-alt-circle-left"></i>
+          {{resort.region}}
+        </div>
+      </div>
+      <div class="dates">
+        <h6>
+          Season: {{resort.season_open}} - {{resort.season_close}}
+        </h6>
+      </div>
       <div class="trails">
         <h6>Trails: {{resort.total_runs}} Runs</h6>
         <div class="green-runs" *ngIf="resort.green_run_pct > 0">

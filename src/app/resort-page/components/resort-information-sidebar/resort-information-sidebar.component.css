@@ -25,6 +25,17 @@
     font-size: 14px;
 }
 
+.location {
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+.dates {
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .closed {
     color: #ea4335;
 }
@@ -62,4 +73,8 @@
 
 .double-bd:first-child {
     margin-right: 5px;
+}
+
+#region-selector {
+    cursor: pointer;
 }

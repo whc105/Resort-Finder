@@ -1,8 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as moment from 'moment';
-import { Resort } from '../../../../resources/models';
+import { Router } from '@angular/router';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import * as moment from 'moment';
+
+import { Resort } from '../../../../resources/models';
+
 
 @Component({
   selector: 'resort-information-sidebar',
@@ -18,7 +22,8 @@ export class ResortInformationSidebarComponent implements OnInit {
   public isClosed: boolean;
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -32,6 +37,10 @@ export class ResortInformationSidebarComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content, { centered: true });
+  }
+
+  redirectToList() {
+    this.router.navigate([`/resorts/${this.resort.region}`])
   }
 
 }

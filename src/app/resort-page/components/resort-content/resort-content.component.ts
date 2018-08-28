@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { FetchMapsDataService } from '../../../fetch-maps-data.service';
-
 import { Resort, Locality } from '../../../../resources/models';
 import googleAPIKey from '../../../../resources/key';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { UserPropsService } from '../../../user-props.service';
 
 
@@ -28,6 +29,7 @@ export class ResortContentComponent implements OnInit {
   public locality: Locality;
 
   constructor(
+    private router: Router,
     private sanitizer: DomSanitizer,
     private fetchMapsDataService: FetchMapsDataService,
     private userPropsService: UserPropsService
@@ -60,6 +62,10 @@ export class ResortContentComponent implements OnInit {
     this.subscriptions.forEach((sub: Subscription) => {
       sub.unsubscribe();
     });
+  }
+
+  redirectToList() {
+    this.router.navigate([`/resorts/${this.resort.region}`])
   }
   
 }
