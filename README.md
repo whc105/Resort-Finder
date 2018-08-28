@@ -16,5 +16,9 @@ The biggest skiable terrain is 24710 Acres<br/>
 The highest vertical drop is 7477 ft (Zermatt, Switzerland)<br/>
 
 
-Will Implement One of the Following
-https://api.darksky.net/forecast
+TODO
+Add loading
+Google Maps API for Resort Listings
+Landing Page
+More filters
+Weather Forecast: https://api.darksky.net/forecast
