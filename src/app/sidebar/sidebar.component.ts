@@ -3,7 +3,7 @@ import { FormBuilder } from "@angular/forms"
 
 
 @Component({
-  selector: 'sidebar',
+  selector: 'list-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })

@@ -1,15 +1,17 @@
 <div class="main">
   <div class="sidebar">
-    <sidebar (filters)="saveFilters($event)"></sidebar>
+    <list-sidebar (filters)="saveFilters($event)"></list-sidebar>
   </div>
   <div class="list">
     <div class="resort-list">
       <resort-list-header (sortProps)="saveSortProps($event)"></resort-list-header>
       <div class="resorts">
+        <ngx-loading [show]="isLoading" [config]="{ backdropBackgroundColour: 'rgba(0, 0, 0, 0)', primaryColour: '#007acc', animationType: 'sk-cube-grid' }">
+        </ngx-loading>
         <div *ngFor="let resort of resortList | async" class="resort-element">
           <resort-item [resort]=resort></resort-item>
         </div>
-        <div *ngIf="(resortList | async)?.length === 0" class="not-found">
+        <div *ngIf="(resortList | async)?.length === 0 && !isLoading" class="not-found">
           There are no ski resorts under the given properties
           <i class="far fa-sad-tear"></i>
         </div>

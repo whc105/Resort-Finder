@@ -14,6 +14,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { LoadingModule } from 'ngx-loading';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LoadingModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes

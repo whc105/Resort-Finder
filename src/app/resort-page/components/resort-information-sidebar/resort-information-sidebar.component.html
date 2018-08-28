@@ -72,16 +72,9 @@
           </div>
         </div>
       </div>
-      <div class="web-link" *ngIf="resortLink">
-        <h6>
-          <a [href]="resortLink.official_website">{{resort.resort_name}}'s Website</a>
-        </h6>
+      <div class="web-link">
+        <a [href]="resortLink.official_website" *ngIf="resortLink">{{resort.resort_name}}'s Site</a>
         <div *ngIf="resortMap">
-          <h6>
-            <a [href]="resortMap[0].$.url">{{resort.resort_name}}'s Trail Map
-              <i class="far fa-map"></i>
-            </a>
-          </h6>
           <img id="trail-map" [src]="resortMap[0].$.url" *ngIf="!opened" (click)="open(content)">
           <ng-template #content let-c="close" let-d="dismiss">
             <img id="trail-map-large" [src]="resortMap[0].$.url">

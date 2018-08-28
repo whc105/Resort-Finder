@@ -18,6 +18,8 @@ export class ResortListComponent implements OnInit {
   public filters: BehaviorSubject<{}> = new BehaviorSubject({});
   public sorts: BehaviorSubject<{}> = new BehaviorSubject({});
 
+  public isLoading: boolean = true;
+
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -57,6 +59,7 @@ export class ResortListComponent implements OnInit {
             }
           }))
           .subscribe((resorts) => {
+            this.isLoading = false;
             this.resortList.next(resorts);
           }),
       );
