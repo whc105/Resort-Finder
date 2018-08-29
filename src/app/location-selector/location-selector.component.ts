@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LocationSelectorComponent implements OnInit {
 
   @Output() locationEvent: EventEmitter<any> = new EventEmitter();
+  @Output() saveLocations: EventEmitter<any> = new EventEmitter();
 
   public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>(this.getRegions());
   public selectedLocations: string[] = [];
@@ -55,11 +56,17 @@ export class LocationSelectorComponent implements OnInit {
   //Adds to subscription list
   getLocations(paramRegion) {
     this.fetchLocationsService.getLocations(paramRegion).then(() => {
+
       this.subscriptions.push(
         this.fetchLocationsService.locations$.subscribe((locations) => {
           this.locations.next(locations);
+          this.saveLocations.emit(locations);
         })
-      )
+      );
+      
+      //Unsubscribe from previous location observable
+      this.subscriptions[1].unsubscribe();
+      this.subscriptions.pop();
     })
   }
 

@@ -6,6 +6,10 @@ const app = express();
 var port = process.env.PORT || 8080;
 app.set('port', port);
 
+app.use(express.static(path.join(__dirname, 'dist/ski-resort-finder')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const getResortsAPI = require('./api/getResorts');
 const getLocationsAPI = require('./api/getLocations');
 const getMapsAPI = require('./api/getMapsAPI');
@@ -19,10 +23,6 @@ getSkiMapAPI(app);
 getYelpFusionAPI(app);
 
 require('./db');
-
-app.use(express.static(path.join(__dirname, 'dist/ski-resort-finder')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/ski-resort-finder/index.html'));

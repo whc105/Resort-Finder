@@ -19,7 +19,7 @@ module.exports = app => {
                 }
                 res.send(returnData);
             }
-        })
+        });
     });
 
     //Gets the first resort trail map
@@ -39,6 +39,25 @@ module.exports = app => {
                     });
                 })
             }
+        });
+    });
+
+    //Given a location's regions, gets all resort's geo location
+    app.post('/api/getResortGeoLocation', (req, res) => {
+        //console.log(req.body.length)
+
+        const locations = req.body.reduce((acc, current) => {
+            acc = acc.concat(current.locations);
+            return acc;
+        }, []);
+
+        ResortMap.find({"Region.name": {$in: locations}}, (err, data) => {
+            if (err) {
+                res.send(err);
+            } else {
+                //console.log(data)
+                res.send(data);
+            }
         })
-    })
+    });
 }

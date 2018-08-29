@@ -11,8 +11,12 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { ToolBarModule } from '@progress/kendo-angular-toolbar';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { AgmCoreModule } from '@agm/core'; // Google Maps API
 
 import { LoadingModule } from 'ngx-loading';
 
@@ -28,11 +32,6 @@ import { ResortInformationSidebarComponent } from './resort-page/components/reso
 import { ResortContentComponent } from './resort-page/components/resort-content/resort-content.component';
 import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
 import { NearbyEstablishmentsComponent } from './resort-page/components/nearby-establishments/nearby-establishments.component';
-import { LayoutModule } from '@progress/kendo-angular-layout';
-import { TreeViewModule } from '@progress/kendo-angular-treeview';
-
-
-
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -64,6 +63,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     LoadingModule,
     NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCdouL4ILt_yeXV71VF8brpFy2hMbCQTcg"
+    }),
     RouterModule.forRoot(
       appRoutes
     ),

@@ -45,7 +45,7 @@ export class FetchResortsService {
       return response.json();
     }).then((resort) => {
       return resort;
-    })
+    });
   }
 
   fetchResortWebsite(name) {
@@ -53,7 +53,7 @@ export class FetchResortsService {
       return response.json();
     }).then((resort) => {
       return resort;
-    })
+    });
   }
 
   //Takes an ID number to find the latest available trailmap
@@ -62,7 +62,22 @@ export class FetchResortsService {
       return response.json();
     }).then((resortMap) => {
       return resortMap;
-    })
+    });
+  }
+
+  //Get resort geolocation for google maps
+  fetchResortGeoLocation(region) {
+    return fetch("/api/getResortGeoLocation", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(region)
+    }).then((response) => {
+      return response.json();
+    }).then((resortGeoLocations) => {
+      return resortGeoLocations;
+    });
   }
 
 }

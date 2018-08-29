@@ -7,3 +7,8 @@
 .search {
     padding: 10px 0px;
 }
+
+agm-map {
+    height: 300px;
+    width: 300px;
+}

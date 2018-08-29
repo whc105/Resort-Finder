@@ -38,5 +38,10 @@
       </label>
     </div>
   </div>
-  <location-selector (locationEvent)="regionSelector($event)"></location-selector>
+  <location-selector (locationEvent)="regionSelector($event)" (saveLocations)="saveLocations($event)"></location-selector>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="8" [disableDefaultUI]="false" [zoomControl]="false">
+    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng"
+      [label]="m.label">
+    </agm-marker>
+  </agm-map>
 </div>

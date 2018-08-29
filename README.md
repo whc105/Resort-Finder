@@ -3,8 +3,8 @@
 Resort Trail Maps are from Skimap.org
 
 Run with 
-* ng serve --proxy-config proxy.config.json
 * npm run build-server
+* ng serve --proxy-config proxy.config.json
 
 Some Resort Analysis<br/>
 Average Lift Ticket Price: $55.05078125<br/>
