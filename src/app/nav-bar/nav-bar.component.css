@@ -8,9 +8,11 @@
     font-weight: bold;
     border-bottom: 2px solid transparent;
     font-size: 1.35rem;
+    transition: all .2s ease-out;
 }
 
 .navbar-brand:hover {
+    cursor: pointer;
     transition: all .2s ease-in;
     color: #007bff;
     border-bottom: 2px solid #007bff

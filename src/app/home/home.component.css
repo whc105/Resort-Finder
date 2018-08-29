@@ -6,26 +6,26 @@
 .init {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 
 .title {
     display: flex;
     flex-direction: column;
     padding: 15% 5%;
+    flex: 1 1 0%;
 }
 
 .title-header {
-    font-size: 45px;
     line-height: 1.2;
-    font-size: 3rem;
+    font-size: 40px;
     font-weight: 300;
 }
 
 .starting {
     margin: 16px;
     display: flex;
-    float: right;
+    flex: 1 1 0%;
+    justify-content: flex-end;
 }
 
 .starting-location {

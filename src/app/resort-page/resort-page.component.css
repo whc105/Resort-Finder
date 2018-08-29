@@ -2,18 +2,17 @@
     display: flex;
     flex-direction: row;
     height: auto;
+    background-image: linear-gradient(white, #e4effa);
 }
 
 .info-sidebar {
     flex: 2 2 0%;
     padding: 0px 5px;
     margin-right: 10px;
-    background-color: rgb(245, 245, 245);
 }
 
 .resort-content {
     flex: 8 8 0%;
-    background-color: rgb(245, 245, 245);
 }
 
 .starting-location {
