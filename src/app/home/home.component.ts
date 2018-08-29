@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserPropsService } from '../user-props.service';
 import { BehaviorSubject } from 'rxjs';
 
@@ -18,7 +17,6 @@ export class HomeComponent implements OnInit {
   public startingLocation: BehaviorSubject<string> = new BehaviorSubject("");
 
   constructor(
-    private router: Router,
     private userPropsService: UserPropsService
   ) { }
 
@@ -26,10 +24,6 @@ export class HomeComponent implements OnInit {
     this.userPropsService.startingLocation$.subscribe((startingLocation) => {
       this.startingLocation.next(startingLocation);
     });
-  }
-
-  redirect(region) {
-    this.router.navigate([`/resorts/${region}`]);
   }
 
   alterLocation(event) {

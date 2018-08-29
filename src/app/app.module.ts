@@ -29,6 +29,8 @@ import { ResortContentComponent } from './resort-page/components/resort-content/
 import { ResortListHeaderComponent } from './resort-list/resort-list-header/resort-list-header.component';
 import { NearbyEstablishmentsComponent } from './resort-page/components/nearby-establishments/nearby-establishments.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
+
 
 
 
@@ -72,6 +74,7 @@ const appRoutes: Routes = [
     ButtonsModule,
     ToolBarModule,
     LayoutModule,
+    TreeViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

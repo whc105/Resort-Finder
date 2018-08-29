@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from "@angular/forms"
 
-
 @Component({
   selector: 'list-sidebar',
   templateUrl: './sidebar.component.html',

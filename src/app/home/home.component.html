@@ -1,20 +1,19 @@
 <div class="home">
-  <div class="title">
-    Pick A Region
-  </div>
-  <!-- <div class="regions">
-    <button kendoButton (click)="redirect('Northeast')" [look]="'outline'">Northeast</button>
-    <button kendoButton (click)="redirect('Midwest')" [look]="'outline'">Midwest</button>
-    <button kendoButton (click)="redirect('Rocky Mountains')" [look]="'outline'">Rocky Mountains</button>
-    <button kendoButton (click)="redirect('West Coast')" [look]="'outline'">West Coast</button>
-  </div>
-  <div class="regions">
-    <button kendoButton (click)="redirect('Canada')" [look]="'outline'">Canada</button>
-    <button kendoButton (click)="redirect('Europe')" [look]="'outline'">Europe</button>
-    <button kendoButton (click)="redirect('Southern Hemisphere')" [look]="'outline'">Southern Hemisphere</button>
-    <button kendoButton (click)="redirect('All')" [look]="'outline'">Everywhere!</button>
-  </div> -->
-  <div class="starting">
-    <input class="starting-location" kendoTextBox [value]="startingLocation | async" placeholder="Starting Location" (keyup)="alterLocation($event)"/>
+  <div class="init">
+    <div class="title animated fadeIn">
+      <div class="title-header">
+        Find Your Perfect Ski Hill
+      </div>
+      <div class="title-content">
+        Plan Logistics
+      </div>
+      <div class="title-compare">
+        Compare Resorts
+      </div>
+    </div>
+    <div class="starting">
+      <input class="starting-location" kendoTextBox [value]="startingLocation | async" placeholder="Starting Location" (keyup)="alterLocation($event)"
+      />
+    </div>
   </div>
 </div>

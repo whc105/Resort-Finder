@@ -1,16 +1,34 @@
-.title {
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
+.home {
+    background-image: linear-gradient(white, #c4ddf7);
+    height: calc(100vh - 52px);
 }
 
-.regions {
+.init {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    margin: 25px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    padding: 15% 5%;
+}
+
+.title-header {
+    font-size: 45px;
+    line-height: 1.2;
+    font-size: 3rem;
+    font-weight: 300;
 }
 
 .starting {
-    margin: 25px;
+    margin: 16px;
     display: flex;
+    float: right;
+}
+
+.starting-location {
+    border: 2px solid #007bff;
+    border-radius: 6px;
 }

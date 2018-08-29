@@ -33,6 +33,7 @@
     "@progress/kendo-angular-l10n": "^1.1.0",
     "@progress/kendo-angular-layout": "^3.1.2",
     "@progress/kendo-angular-toolbar": "^0.2.2",
+    "@progress/kendo-angular-treeview": "^2.3.0",
     "@progress/kendo-theme-bootstrap": "^2.13.7",
     "@progress/kendo-theme-default": "latest",
     "axios": "^0.18.0",
