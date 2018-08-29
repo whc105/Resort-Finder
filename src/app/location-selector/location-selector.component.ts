@@ -26,11 +26,15 @@ export class LocationSelectorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const paramRegion = this.activatedRoute.snapshot.params.region;
-    this.getLocations(paramRegion);
-    if (paramRegion !== "All") {
-      this.isCollapsed[0] = false;
-    }
+    this.subscriptions.push(
+      this.activatedRoute.url.subscribe((params) => {
+        //Gets the region from the params
+        this.getLocations(params[1].path);
+        if (params[1].path !== "All") {
+          this.isCollapsed[0] = false;
+        }
+      })
+    );
   }
 
   ngOnDestroy() {

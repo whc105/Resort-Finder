@@ -1,4 +1,7 @@
-<nav class="navbar navbar-dark">
-  <a routerLink="/" class="navbar-brand">Hills</a>
-  <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)" *ngIf="router.url !== '/'"></kendo-dropdownlist>
+<nav class="navbar sticky-top navbar-dark">
+  <div class="navbar-brand" (click)="router.navigate(['/'])">
+    <i class="far fa-snowflake"></i>
+    Hills
+  </div>
+  <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)"></kendo-dropdownlist>
 </nav>

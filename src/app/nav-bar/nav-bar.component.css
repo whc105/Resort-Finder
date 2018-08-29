@@ -1,3 +1,22 @@
 .navbar {
-    background: rgb(0, 122, 204);
+    background: white;
+    padding: 0.25rem 1rem;
+}
+
+.navbar-brand {
+    color: #20252b;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    font-size: 1.35rem;
+}
+
+.navbar-brand:hover {
+    transition: all .2s ease-in;
+    color: #007bff;
+    border-bottom: 2px solid #007bff
+}
+
+kendo-dropdownlist {
+    border: 2px solid #007bff;
+    border-radius: 6px;
 }

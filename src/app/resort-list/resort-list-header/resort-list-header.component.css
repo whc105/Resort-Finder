@@ -1,13 +1,13 @@
 .resort-header {
     padding: 12px 0px;
-    padding-left: 10px;
+    padding-left: 13px;
     padding-right: 17px;
-    background-color: #ced4da;
-    border-bottom: 1px solid #babec2;
-    border-left: 3px solid transparent;
+    background-color: #c4ddf7;
     display: flex;
     flex-direction: row;
     height: 40px;
+    position: sticky;
+    top: 52px;
 }
 
 .resort-header > div {
