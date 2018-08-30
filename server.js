@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 var port = process.env.PORT || 8080;
-console.log(port)
 app.set('port', port);
 
 app.use(express.static(path.join(__dirname, 'dist/ski-resort-finder')));

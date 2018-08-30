@@ -1,7 +1,7 @@
 const mongoUser = "hills-prod";
-const mongoPass = "8gdB93YwtZCLXgGt";
+const mongoPass = "cc5YerUQ6K5nrvsp";
 
 module.exports = {
-    yelpAccessToken: "enlkgqwAREoM-cS6oj413-O68oDFDYvl4-zJTbSlbt8el4hKE2CrmFxJlQUEV5mLNvfvlxT3Nc_SU3yZGoWRkpJM1ZVGrkg93AemX1Vngd9d45e-CK6OeRmd35CBW3Yx",
+    yelpAccessToken: "rfDX1Cn4pSLlnLJ8Lcc_4eMsJr7IZGOVNuBG2dclCWLY9v5DuLTMN6GOX7gUdF7kMqsV4x2OIfwzQC6VVBAUY_QVDkduYJsO663tLbO8VBvNdHxSA3G5HwsaKHyIW3Yx",
     mongoURI: `mongodb://${mongoUser}:${mongoPass}@ds018268.mlab.com:18268/hills-prod`
 }
