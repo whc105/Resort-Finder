@@ -26,7 +26,9 @@ export class SidebarComponent implements OnInit {
     searchValue: [""],
   });
 
-  markers: any[] = []
+  public markers: any[] = []
+
+  public previousWindow;
 
   // initial center position for the map
   public lat: number = 0;
@@ -63,20 +65,25 @@ export class SidebarComponent implements OnInit {
   getGeoLocations(resorts) {
     this.lat = 0;
     this.lng = 0;
+    let totalResorts = 0;
+    this.previousWindow = undefined;
     this.fetchResortsService.fetchResortsGeoLocation(resorts).then((resortsGeoLocations) => {
-      this.markers = resortsGeoLocations.map((resort) => {
-        this.lat += parseFloat(resort.SkiArea.geo_lat);
-        this.lng += parseFloat(resort.SkiArea.geo_lng);
-        return {
-          lat: parseFloat(resort.SkiArea.geo_lat),
-          lng: parseFloat(resort.SkiArea.geo_lng),
-          label: resort.SkiArea.name,
-          draggable: true
+      this.markers = resortsGeoLocations.reduce((acc, current) => {
+        if (current.SkiArea.geo_lat && current.SkiArea.geo_lat) {
+          this.lat += parseFloat(current.SkiArea.geo_lat);
+          this.lng += parseFloat(current.SkiArea.geo_lng);
+          acc.push({
+            lat: parseFloat(current.SkiArea.geo_lat),
+            lng: parseFloat(current.SkiArea.geo_lng),
+            name: current.SkiArea.name,
+            website: current.SkiArea.official_website,
+          });
+          totalResorts++;
         }
-      });
-      this.lat /= this.markers.length;
-      this.lng /= this.markers.length;
-      console.log(this.lat, this.lng)
+        return acc;
+      }, []);
+      this.lat /= totalResorts;
+      this.lng /= totalResorts;
     });
   }
 
@@ -84,16 +91,21 @@ export class SidebarComponent implements OnInit {
     this.filters.emit(this.filterInputs.value);
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
+  clickedMarker(infoWindow) {
+    if (this.previousWindow) {
+      this.previousWindow.close();
+    }
+    this.previousWindow = infoWindow;
   }
 
-  mapClicked($event) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
+  mapClicked(event) {
+    if (this.previousWindow) {
+      this.previousWindow.close();
+    }
+  }
+
+  navigateToSite(url) {
+    window.open(url);
   }
 
 }
