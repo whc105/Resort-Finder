@@ -3,7 +3,7 @@
     <h6>
       Search
     </h6>
-    <input class="form-control" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)" />
+    <input class="form-control search-input" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)" />
   </div>
   <div class="terrain-filters">
     <h6>
@@ -37,13 +37,13 @@
         <input type="checkbox" formControlName="open" (change)="emitFilterData($event)"> Open
       </label>
     </div>
+    <button class="btn btn-outline-dark btn-sm" id="google-map" (click)="open(content)">Mark On Map</button>
   </div>
   <location-selector (locationEvent)="regionSelector($event)"></location-selector>
-  <button class="btn btn-outline-dark" id="google-map" (click)="open(content)">Map</button>
   <ng-template #content let-c="close" let-d="dismiss">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
-      <agm-marker *ngFor="let resort of markers; let i = index" (markerClick)="clickedMarker(infoWindow)" [latitude]="resort.lat" [longitude]="resort.lng"
-        [iconUrl]="{
+      <agm-marker *ngFor="let resort of markers; let i = index" (markerClick)="clickedMarker(infoWindow)" [latitude]="resort.lat"
+        [longitude]="resort.lng" [iconUrl]="{
         url: './assets/images/map-pin-solid.svg',
         scaledSize: {
             width: 13.33,

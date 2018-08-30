@@ -101,6 +101,7 @@ export class SidebarComponent implements OnInit {
   mapClicked(event) {
     if (this.previousWindow) {
       this.previousWindow.close();
+      this.previousWindow = undefined;
     }
   }
 

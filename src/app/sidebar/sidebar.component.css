@@ -8,6 +8,11 @@
     padding: 10px 0px;
 }
 
+.search-input {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+}
+
 agm-map {
     height: 500px;
     width: 500px;
