@@ -1,6 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder } from "@angular/forms"
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { Resort } from '../../resources/models';
 import { FetchResortsService } from '../fetch-resorts.service';
 
 @Component({
@@ -10,6 +13,7 @@ import { FetchResortsService } from '../fetch-resorts.service';
 })
 export class SidebarComponent implements OnInit {
 
+  @Input() resortList: Resort[] = [];
   @Output() filters: EventEmitter<any> = new EventEmitter();
 
   public filterInputs = this.formBuilder.group({
@@ -22,42 +26,31 @@ export class SidebarComponent implements OnInit {
     searchValue: [""],
   });
 
-  public locations: any[] = [];
-
-  markers: any[] = [
-    {
-      lat: 51.673858,
-      lng: 7.815982,
-      label: 'A',
-      draggable: true
-    },
-    {
-      lat: 51.373858,
-      lng: 7.215982,
-      label: 'B',
-      draggable: false
-    },
-    {
-      lat: 51.723858,
-      lng: 7.895982,
-      label: 'C',
-      draggable: true
-    }
-  ]
-
-  // google maps zoom level
-  zoom: number = 8;
+  markers: any[] = []
 
   // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  public lat: number = 0;
+  public lng: number = 0;
 
   constructor(
+    private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private fetchResortsService: FetchResortsService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  ngOnChanges() {
+    if (this.resortList.length > 0) {
+      const resortNames = this.resortList.map((resort) => {
+        return resort.resort_name;
+      })
+      this.getGeoLocations(resortNames);
+    }
+  }
+
+  open(content) {
+    this.modalService.open(content, { centered: true });
   }
 
   regionSelector(regions) {
@@ -67,10 +60,23 @@ export class SidebarComponent implements OnInit {
     this.filters.emit(this.filterInputs.value);
   }
 
-  saveLocations(locations) {
-    this.locations = locations;
-    this.fetchResortsService.fetchResortGeoLocation(this.locations).then((resortGeoLocations) => {
-      console.log(resortGeoLocations);
+  getGeoLocations(resorts) {
+    this.lat = 0;
+    this.lng = 0;
+    this.fetchResortsService.fetchResortsGeoLocation(resorts).then((resortsGeoLocations) => {
+      this.markers = resortsGeoLocations.map((resort) => {
+        this.lat += parseFloat(resort.SkiArea.geo_lat);
+        this.lng += parseFloat(resort.SkiArea.geo_lng);
+        return {
+          lat: parseFloat(resort.SkiArea.geo_lat),
+          lng: parseFloat(resort.SkiArea.geo_lng),
+          label: resort.SkiArea.name,
+          draggable: true
+        }
+      });
+      this.lat /= this.markers.length;
+      this.lng /= this.markers.length;
+      console.log(this.lat, this.lng)
     });
   }
 

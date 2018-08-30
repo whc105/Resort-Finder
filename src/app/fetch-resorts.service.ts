@@ -65,9 +65,9 @@ export class FetchResortsService {
     });
   }
 
-  //Get resort geolocation for google maps
-  fetchResortGeoLocation(region) {
-    return fetch("/api/getResortGeoLocation", {
+  //Given a list of regions, get resort geolocation for google maps
+  fetchRegionsResortGeoLocation(region) {
+    return fetch("/api/regions/getResortGeoLocation", {
       method: "post",
       headers: {
         "Content-Type": "application/json"
@@ -80,4 +80,18 @@ export class FetchResortsService {
     });
   }
 
+  //Given a list of resorts, get the respective resort geolocation for google maps
+  fetchResortsGeoLocation(resorts) {
+    return fetch("/api/resorts/getResortGeoLocation", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(resorts)
+    }).then((response) => {
+      return response.json();
+    }).then((resortGeoLocations) => {
+      return resortGeoLocations;
+    });
+  }
 }

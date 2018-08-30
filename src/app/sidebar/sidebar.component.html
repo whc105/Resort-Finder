@@ -38,10 +38,12 @@
       </label>
     </div>
   </div>
-  <location-selector (locationEvent)="regionSelector($event)" (saveLocations)="saveLocations($event)"></location-selector>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="8" [disableDefaultUI]="false" [zoomControl]="false">
-    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng"
-      [label]="m.label">
-    </agm-marker>
-  </agm-map>
+  <location-selector (locationEvent)="regionSelector($event)"></location-selector>
+  <button class="btn btn-outline-dark" id="google-map" *ngIf="!opened" (click)="open(content)">Map</button>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6" [disableDefaultUI]="false" [zoomControl]="false">
+      <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng">
+      </agm-marker>
+    </agm-map>
+  </ng-template>
 </div>

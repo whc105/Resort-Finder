@@ -13,8 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LocationSelectorComponent implements OnInit {
 
   @Output() locationEvent: EventEmitter<any> = new EventEmitter();
-  @Output() saveLocations: EventEmitter<any> = new EventEmitter();
-
+  
   public locations: BehaviorSubject<any[]> = new BehaviorSubject<any>(this.getRegions());
   public selectedLocations: string[] = [];
   public isCollapsed: boolean[] = Array(this.locations.getValue().length).fill(true);
@@ -60,7 +59,6 @@ export class LocationSelectorComponent implements OnInit {
       this.subscriptions.push(
         this.fetchLocationsService.locations$.subscribe((locations) => {
           this.locations.next(locations);
-          this.saveLocations.emit(locations);
         })
       );
       
