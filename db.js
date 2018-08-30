@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const mongoURI = require('./config').KEYS;
+
 const Schema = mongoose.Schema;
 
 const ResortSchema = new Schema({
@@ -43,4 +45,4 @@ const ResortMapSchema = new Schema({
 
 mongoose.model("ResortMap", ResortMapSchema);
 
-mongoose.connect("mongodb://localhost:27017/skiresorts", { useNewUrlParser: true });
+mongoose.connect(mongoURI, { useNewUrlParser: true });

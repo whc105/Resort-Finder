@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
   public toShow: boolean = true;
 
   constructor(
-    private router: Router
+    public router: Router
   ) { }
 
   ngOnInit() {
