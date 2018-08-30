@@ -1,4 +1,4 @@
-const yelpAccessToken = require("../devKeys.js").yelpAccessToken;
+const yelpAccessToken = require("../.devKeys.js").yelpAccessToken;
 const axios = require('axios');
 
 module.exports = app => {
