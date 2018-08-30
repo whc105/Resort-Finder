@@ -1,0 +1,25 @@
+.fa-yelp {
+    color: #d32323;
+}
+
+.yelp-navigate {
+    cursor: pointer;
+}
+
+.establishment {
+    text-align: left;
+}
+
+.establishment-data {
+    border-top: 1px solid #e7e7e7;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.establishment-name {
+    cursor: pointer;
+}
+
+.subtitle {
+    color: rgb(160, 160, 160)
+}
