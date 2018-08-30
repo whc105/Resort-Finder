@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const mongoURI = require('./config').KEYS;
 
-console.log(mongoURI)
-
 const Schema = mongoose.Schema;
 
 const ResortSchema = new Schema({
