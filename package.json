@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build-server",
+    "start": "npm run server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-server": "nodemon server.js"
+    "build-server": "nodemon server.js",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
