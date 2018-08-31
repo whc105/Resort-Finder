@@ -3,7 +3,8 @@
     <h6>
       Search
     </h6>
-    <input class="form-control search-input" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)" />
+    <input class="form-control search-input" placeholder="Search" formControlName="searchValue" (keyup)="emitFilterData($event)"
+    />
   </div>
   <div class="terrain-filters">
     <h6>
@@ -40,7 +41,8 @@
     <button class="btn btn-outline-dark btn-sm" id="google-map" (click)="open(content)">Mark On Map</button>
   </div>
   <location-selector (locationEvent)="regionSelector($event)"></location-selector>
-  <ng-template #content let-c="close" let-d="dismiss">
+  <ng-template #content let-c="close" let-d="dismiss" let-modal>
+    <i class="fa fa-times map-exit" (click)="d('close')"></i>
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
       <agm-marker *ngFor="let resort of markers; let i = index" (markerClick)="clickedMarker(infoWindow)" [latitude]="resort.lat"
         [longitude]="resort.lng" [iconUrl]="{

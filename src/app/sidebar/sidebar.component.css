@@ -30,3 +30,11 @@ agm-map {
 .resort-site:hover {
     cursor: pointer;
 }
+
+.map-exit {
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
