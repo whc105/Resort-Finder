@@ -1,8 +1,9 @@
 const googleMapsClient = require("@google/maps");
+const googleAPIKey = require('../.devKeys').googleKey;
 
 module.exports = app => {
     const client = googleMapsClient.createClient({
-        key: "AIzaSyCdouL4ILt_yeXV71VF8brpFy2hMbCQTcg",
+        key: googleAPIKey,
         Promise: Promise
     });
 
