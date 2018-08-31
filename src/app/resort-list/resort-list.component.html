@@ -12,7 +12,7 @@
           <resort-item [resort]=resort></resort-item>
         </div>
         <div *ngIf="(resortList | async)?.length === 0 && !isLoading" class="not-found">
-          There are no ski resorts under the given properties
+          There are no ski resorts under the given properties. Try changing the filters.
           <i class="far fa-sad-tear"></i>
         </div>
       </div>

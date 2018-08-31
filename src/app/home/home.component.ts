@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserPropsService } from '../user-props.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
+import { UserPropsService } from '../user-props.service';
 
 @Component({
   selector: 'home',
@@ -10,19 +10,25 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  public hoverFields: any = {
-    rockymtn: false,
-  }
-
   public startingLocation: BehaviorSubject<string> = new BehaviorSubject("");
+
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private userPropsService: UserPropsService
   ) { }
 
   ngOnInit() {
-    this.userPropsService.startingLocation$.subscribe((startingLocation) => {
-      this.startingLocation.next(startingLocation);
+    this.subscriptions.push(
+      this.userPropsService.startingLocation$.subscribe((startingLocation) => {
+        this.startingLocation.next(startingLocation);
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
     });
   }
 

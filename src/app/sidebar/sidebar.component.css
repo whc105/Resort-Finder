@@ -41,3 +41,7 @@ agm-map {
     top: 5px;
     cursor: pointer;
 }
+
+#google-map {
+    margin-bottom: 10px;
+}

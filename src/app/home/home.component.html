@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="starting">
-      <input class="starting-location" kendoTextBox [value]="startingLocation | async" placeholder="Starting Location" (keyup)="alterLocation($event)"
-      />
+      <input class="starting-location" kendoTextBox [value]="startingLocation | async" placeholder="Starting City" (keyup)="alterLocation($event)"
+        ngbTooltip="Enter your departure city. Otherwise, defaults to NYC" placement="bottom" />
     </div>
   </div>
 </div>

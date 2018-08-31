@@ -18,6 +18,18 @@
     border-bottom: 2px solid #007bff
 }
 
+.navbar-departure {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 1 0%;
+    padding-right: 16px;
+}
+
+.navbar-departure > span {
+    padding-left: 5px;
+    font-weight: 500;
+}
+
 kendo-dropdownlist {
     border: 2px solid #5fa9f5;
     border-radius: 6px;

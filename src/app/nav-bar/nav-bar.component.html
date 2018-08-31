@@ -3,5 +3,8 @@
     <i class="far fa-snowflake"></i>
     Hills
   </div>
+  <div class="navbar-departure" *ngIf="router.url !== '/' && startingLocation | async">
+    Depature From: <span>{{(startingLocation | async) | titlecase}}</span>
+  </div>
   <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)" [value]="selectedValue"></kendo-dropdownlist>
 </nav>
