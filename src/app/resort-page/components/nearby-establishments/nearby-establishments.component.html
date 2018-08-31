@@ -2,10 +2,19 @@
   <span class="yelp-navigate" (click)="navigateToYelp('https://www.yelp.com')">
     <i class="fab fa-yelp"></i> Yelp Listings
   </span>
-  <div *ngFor="let establishment of localEstablishments">
-    <div class="establishment-data">
-      <div class="establishment-name" [ngbTooltip]="establishment.location.display_address.toString()" (click)="navigateToYelp(establishment.url)">
+  <div *ngFor="let establishment of localEstablishments" class="establishment-element">
+    <div class="establishment-img">
+      <img [src]="establishment.image_url">
+    </div>
+    <div class="establishment-data" (click)="navigateToYelp(establishment.url)">
+      <div class="establishment-name">
         {{establishment.name}} {{establishment.price}}
+      </div>
+      <div>
+        Address: {{establishment.location.display_address.slice(0, establishment.location.display_address.length - 1).toString()}}
+      </div>
+      <div>
+        Distance: {{(establishment.distance / 1609.34).toFixed(2)}} Miles
       </div>
       <img src="../../../../assets/yelp/regular_{{establishment.rating}}.png" ngbTooltip="{{establishment.review_count}} Reviews">
     </div>

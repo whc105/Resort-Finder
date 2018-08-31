@@ -10,13 +10,29 @@
     text-align: left;
 }
 
-.establishment-data {
+.establishment-element {
+    display: flex;
+    flex-direction: row;
     border-top: 1px solid #e7e7e7;
     padding-top: 3px;
     padding-bottom: 3px;
 }
 
-.establishment-name {
+.establishment-img {
+    flex: 1 1 0%;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    margin: 5px;
+    border-radius: 7px;
+}
+
+.establishment-img > img {
+    width: 100%;
+}
+
+.establishment-data {
+    flex: 5 5 0%;
     cursor: pointer;
 }
 
