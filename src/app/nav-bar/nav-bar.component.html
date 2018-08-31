@@ -3,5 +3,5 @@
     <i class="far fa-snowflake"></i>
     Hills
   </div>
-  <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)"></kendo-dropdownlist>
+  <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)" [value]="selectedValue"></kendo-dropdownlist>
 </nav>
