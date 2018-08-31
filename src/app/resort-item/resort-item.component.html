@@ -1,4 +1,4 @@
-<div class="resort-item">
+<div class="resort-item" (click)="navigateToResort()">
   <div id="name">
     <div>
       {{resort.resort_name}}
@@ -18,8 +18,5 @@
   </div>
   <div id="vertical">
     {{resort.vertical_drop}}
-  </div>
-  <div id="select-resort-button" (click)="navigateToResort()">
-    <span class="k-icon k-i-arrow-chevron-right arrow"></span>
   </div>
 </div>

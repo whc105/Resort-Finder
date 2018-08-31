@@ -3,6 +3,7 @@
     flex-direction: row;
     padding: 5px 0px;
     align-items: center;
+    cursor: pointer;
 }
 
 #select-resort-button {
@@ -17,22 +18,10 @@
 }
 
 #name {
-    flex: 5 5 0%;
+    flex: 4 4 0%;
 }
 
-#trails {
-    flex: 1 1 0%;
-}
-
-#lift {
-    flex: 1 1 0%;
-}
-
-#terrain {
-    flex: 1 1 0%;
-}
-
-#vertical {
+#trails, #lift, #terrain, #vertical {
     flex: 1 1 0%;
 }
 

@@ -17,15 +17,11 @@
 }
 
 .name {
-    flex: 5 5 0%;
+    flex: 4 4 0%;
 }
 
-.trails, .lifts, .terrain {
+.trails, .lifts, .terrain, .vertical {
     flex: 1 1 0%;
-}
-
-.vertical {
-    flex: 1.5 1.5 0%;
 }
 
 .trails:hover, .lifts:hover, .terrain:hover, .vertical:hover {

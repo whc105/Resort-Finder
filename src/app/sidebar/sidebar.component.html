@@ -38,7 +38,7 @@
         <input type="checkbox" formControlName="open" (change)="emitFilterData($event)"> Open
       </label>
     </div>
-    <button class="btn btn-outline-dark btn-sm" id="google-map" (click)="open(content)">Mark On Map</button>
+    <button class="btn btn-outline-dark btn-sm" id="google-map" (click)="open(content)">See On Map</button>
   </div>
   <location-selector (locationEvent)="regionSelector($event)"></location-selector>
   <ng-template #content let-c="close" let-d="dismiss" let-modal>
