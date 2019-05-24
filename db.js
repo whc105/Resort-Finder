@@ -36,13 +36,13 @@ const ResortSchema = new Schema({
     vertical_drop: Number
 });
 
-mongoose.model("Resort", ResortSchema);
-
 const ResortMapSchema = new Schema({
     SkiArea: Object,
     Region: Array
-})
+});
 
-mongoose.model("ResortMap", ResortMapSchema);
+mongoose.model("Resort", ResortSchema, "Resorts");
+
+mongoose.model("ResortMap", ResortMapSchema, "ResortMaps");
 
 mongoose.connect(mongoURI, { useNewUrlParser: true });

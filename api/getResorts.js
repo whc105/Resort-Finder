@@ -15,7 +15,7 @@ module.exports = app => {
     });
 
     app.get('/api/getResort/:name', (req, res) => {
-        Resort.findOne({resort_name: req.params.name}, (err, resort) => {
+        Resort.findOne({ resort_name: req.params.name }, (err, resort) => {
             if (err) {
                 res.send(err);
             } else {
@@ -25,7 +25,7 @@ module.exports = app => {
     });
 
     app.get('/api/getResorts/:region', (req, res) => {
-        Resort.find({region: req.params.region}, (err, resorts) => {
+        Resort.find({ region: req.params.region }, (err, resorts) => {
             if (err) {
                 res.send(err);
             } else {
