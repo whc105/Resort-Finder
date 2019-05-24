@@ -77,7 +77,6 @@ export class SidebarComponent implements OnInit {
       this.lat /= totalResorts;
       this.lng /= totalResorts;
     });
-    console.log(this.markers)
   }
 
   emitFilterData(e) {
