@@ -42,16 +42,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() { }
 
-  ngOnChanges() {
-    if (this.resortList.length > 0) {
-      const resortNames = this.resortList.map((resort) => {
-        return resort.resort_name;
-      })
-      this.getGeoLocations(resortNames);
-    }
-  }
-
   open(content) {
+    this.getGeoLocations(this.resortList);
     this.modalService.open(content, { centered: true });
   }
 
@@ -85,6 +77,7 @@ export class SidebarComponent implements OnInit {
       this.lat /= totalResorts;
       this.lng /= totalResorts;
     });
+    console.log(this.markers)
   }
 
   emitFilterData(e) {
