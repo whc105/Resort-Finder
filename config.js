@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV != 'production') require('dotenv').load();
+if (process.env.NODE_ENV != 'production') require('dotenv').config();
 
 module.exports = {
 	APPNAME: process.env.APPNAME || 'Hills',

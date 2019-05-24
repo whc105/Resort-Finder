@@ -18,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AgmCoreModule } from '@agm/core'; // Google Maps API
 
-import { LoadingModule } from 'ngx-loading';
+import { NgxLoadingModule } from 'ngx-loading';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -61,7 +61,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    LoadingModule,
+    NgxLoadingModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCdouL4ILt_yeXV71VF8brpFy2hMbCQTcg"
