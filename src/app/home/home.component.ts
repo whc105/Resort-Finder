@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
-
-import { UserPropsService } from '../user-props.service';
 
 @Component({
   selector: 'home',
@@ -10,30 +7,9 @@ import { UserPropsService } from '../user-props.service';
 })
 export class HomeComponent implements OnInit {
 
-  public startingLocation: BehaviorSubject<string> = new BehaviorSubject("");
-
-  private subscriptions: Subscription[] = [];
-
-  constructor(
-    private userPropsService: UserPropsService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.subscriptions.push(
-      this.userPropsService.startingLocation$.subscribe((startingLocation) => {
-        this.startingLocation.next(startingLocation);
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
-  }
-
-  alterLocation(event) {
-    this.userPropsService.setStartingLocation(event.target.value);
   }
 
 }

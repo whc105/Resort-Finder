@@ -39,15 +39,15 @@ export class ResortContentComponent implements OnInit {
     this.subscriptions.push(
       this.userPropsService.startingLocation$.subscribe((startingLocation) => {
         this.startingLocation.next(startingLocation);
+        this.fetchMapsDataService.getDistance(this.startingLocation.value, `${this.resort.resort_name} ${this.resort.location}`).then((distance) => {
+          this.distanceData = distance[0].elements[0];
+        });
       })
     );
 
     this.ticketPriceCostBasis = this.resort.lift_tickets - 55;
     this.mapContent = this.sanitizeURL(`https://www.google.com/maps/embed/v1/place?q=${this.resort.resort_name}%20${this.resort.location}&key=${googleAPIKey}&zoom=14`);
 
-    this.fetchMapsDataService.getDistance(this.startingLocation.value, `${this.resort.resort_name} ${this.resort.location}`).then((distance) => {
-      this.distanceData = distance[0].elements[0];
-    });
 
     this.fetchMapsDataService.getNearbyCity(`${this.resort.resort_name} ${this.resort.location}`).then((locality) => {
       this.locality = locality;

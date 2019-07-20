@@ -21,8 +21,20 @@
 .navbar-departure {
     display: flex;
     justify-content: flex-end;
-    flex: 1 1 0%;
+    flex: 3 3 0%;
     padding-right: 16px;
+}
+
+.starting {
+    margin: 16px;
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: flex-end;
+}
+
+.starting-location {
+    border: 2px solid #5fa9f5;
+    border-radius: 6px;
 }
 
 .navbar-departure > span {
