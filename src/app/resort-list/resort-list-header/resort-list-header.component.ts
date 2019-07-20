@@ -22,7 +22,7 @@ export class ResortListHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  //Enables sort for the resort fields
+  //Enables sort
   sortProperty(field) {
     if (this.sort.property === field) {
       this.sort.direction = !this.sort.direction;
@@ -30,6 +30,7 @@ export class ResortListHeaderComponent implements OnInit {
       this.sort.property = field;
       this.sort.direction = true;
     }
+    
     this.sortProps.emit(this.sort);
   }
 }
