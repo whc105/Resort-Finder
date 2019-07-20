@@ -1,10 +1,10 @@
 .sidebar {
     width: 100%;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 78px);
     padding: 0px 10px;
     position: sticky;
     overflow: overlay;
-    top: 52px;
+    top: 78px;
 }
 
 .search {
