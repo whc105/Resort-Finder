@@ -40,6 +40,10 @@ export class NavBarComponent implements OnInit {
     this.regionsList.push("All");
   }
 
+  alterLocation(event) {
+    this.userPropsService.setStartingLocation(event.target.value);
+  }
+
   redirectToRegion(region) {
     if (region !== "Select A Region") {
       this.selectedValue = region;

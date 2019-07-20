@@ -6,5 +6,9 @@
   <div class="navbar-departure" *ngIf="router.url !== '/' && startingLocation | async">
     Depature From: <span>{{(startingLocation | async) | titlecase}}</span>
   </div>
+  <div class="starting">
+    <input class="starting-location" kendoTextBox [value]="startingLocation | async" placeholder="Starting City" (keydown.enter)="alterLocation($event)"
+      ngbTooltip="Enter your departure city. Otherwise, defaults to NYC" placement="bottom" />
+  </div>
   <kendo-dropdownlist [defaultItem]="'Select A Region'" [data]="regionsList" (valueChange)="redirectToRegion($event)" [value]="selectedValue"></kendo-dropdownlist>
 </nav>
