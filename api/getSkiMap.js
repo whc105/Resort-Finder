@@ -62,15 +62,24 @@ module.exports = app => {
     //Given a list of resorts, get all resort's geo location
     app.post('/api/resorts/getResortGeoLocation', (req, res) => {
 
-        const optRegexp = [];
-        req.body.forEach((opt) => {
-            optRegexp.push(new RegExp(opt, "i"));
-        });
+        const resortNames = req.body.map((resort) => {
+            return resort.resort_name;
+        })
 
-        ResortMap.find({ "SkiArea.name": { $in: optRegexp } }, (err, data) => {
+        ResortMap.find({}, (err, data) => {
             if (err) {
                 res.send(err);
             } else {
+                data = data.filter((elem) => {
+                    let isContain = false;
+                    resortNames.forEach((resortName) => {
+                        if (resortName.includes(elem.SkiArea.name) || elem.SkiArea.name.includes(resortName)) {
+                            isContain = true;
+                            return isContain
+                        }
+                    })
+                    return isContain
+                });
                 res.send(data);
             }
         });
