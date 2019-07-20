@@ -26,6 +26,21 @@ export class SidebarComponent implements OnInit {
     searchValue: [""],
   });
 
+  public filterInputsMinMax = {
+    trails: {
+      min: 0,
+      max: 0
+    },
+    terrain: {
+      min: 0,
+      max: 0
+    },
+    vertical: {
+      min: 0,
+      max: 0
+    }
+  }
+
   public markers: any[] = []
 
   public previousWindow;
@@ -40,7 +55,11 @@ export class SidebarComponent implements OnInit {
     private fetchResortsService: FetchResortsService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  ngOnChanges() {
+    this.setMinMaxSidebarValue(this.resortList);
+  }
 
   open(content) {
     this.getGeoLocations(this.resortList);
@@ -52,6 +71,23 @@ export class SidebarComponent implements OnInit {
       regions: regions
     });
     this.filters.emit(this.filterInputs.value);
+  }
+
+  setMinMaxSidebarValue(resortList) {
+    resortList.forEach((resort) => {
+      this.setMinMax("trails", "total_runs", resort);
+      this.setMinMax("terrain", "skiable_terrain", resort);
+      this.setMinMax("vertical", "vertical_drop", resort);
+    });
+  }
+
+  setMinMax(filterProperty, resortProperty, resort) {
+    if (this.filterInputsMinMax[filterProperty].min > resort[resortProperty] || this.filterInputsMinMax[filterProperty].min === 0) {
+      this.filterInputsMinMax[filterProperty].min = resort[resortProperty];
+    }
+    if (this.filterInputsMinMax[filterProperty].max < resort[resortProperty] ) {
+      this.filterInputsMinMax[filterProperty].max = resort[resortProperty];
+    }
   }
 
   getGeoLocations(resorts) {
