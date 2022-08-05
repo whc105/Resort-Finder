@@ -51,7 +51,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongodb": "^3.2.6",
-    "mongoose": "^5.5.11",
+    "mongoose": "^5.7.5",
     "ngx-image-viewer": "^1.0.13",
     "ngx-loading": "^3.0.1",
     "nodemon": "^1.19.0",
